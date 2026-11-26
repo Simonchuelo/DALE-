@@ -51,9 +51,6 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-weight: 900;
-    font-size: 28px;
-    letter-spacing: -1px;
   }
   .site-header .logo-img {
     width: 34px;
@@ -974,12 +971,12 @@
   <div class="inner">
     <div class="logo">
       <img src="assets/logo-dale.png" alt="DALE+" class="logo-img">
-      <span>DALE+</span>
     </div>
     <div class="nav-links">
       <button class="nav-btn active" onclick="showSection('presentacion', this)">Presentación</button>
       <button class="nav-btn" onclick="showSection('demo', this)">Demo App</button>
       <button class="nav-btn" onclick="showSection('planes', this)">Planes</button>
+      <button class="nav-btn" onclick="showSection('contacto', this)">Contacto</button>
     </div>
   </div>
 </div>
@@ -990,7 +987,6 @@
     <div class="logo">
       <img src="assets/logo-dale.png" alt="DALE+" class="logo-img">
     </div>
-    <h1>DALE+</h1>
     <p class="eslogan">Tu barrio. Más oportunidades.</p>
     <p class="sub">La plataforma digital que conecta a los pequeños comercios de cercanía con los vecinos que viven a pocas cuadras de sus casas.</p>
   </div>
@@ -1251,7 +1247,7 @@
     </div>
   </div>
   <p style="text-align:center; font-size: 14px; color: var(--texto-suave); margin-top: 20px;">
-    ¿Tu negocio no está aquí? <a href="#" style="color: var(--teal); text-decoration: underline; font-weight: 700;">Registrá tu comercio</a> y sumate a DALE+.
+    ¿Tu negocio no está aquí? <a href="javascript:void(0);" onclick="showSection('planes', this)" style="color: var(--teal); text-decoration: underline; font-weight: 700;">Registrá tu comercio</a> y sumate a DALE+.
   </p>
 </section>
 
@@ -1603,6 +1599,65 @@
   <p style="text-align:center; font-size: 12px; color: var(--texto-suave); margin-top: 10px;">
     🏪 <strong>Nota de comercios:</strong> Las imágenes de la sección "Comercios adheridos" se esperan en la carpeta <code>comercios/</code> (ej: <code>comercios/comercio-1.jpg</code>). Ajuste los nombres según sus archivos reales.
   </p>
+</section>
+
+<!-- ============ SECCIÓN: CONTACTO ============ -->
+<section id="contacto" class="section">
+  <div class="seccion-titulo"><span class="num">6</span>Contacto</div>
+  <p class="lead">¿Tenés consultas sobre DALE+, querés registrar tu comercio o necesitás más información? Escribinos y te respondemos a la brevedad.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+    <div class="tarjeta">
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--negro); margin-bottom: 16px;">📧 Escríbinos</h3>
+      <p style="font-size: 14px; color: var(--texto-suave); margin-bottom: 20px;">Completá el formulario y nos pondremos en contacto contigo.</p>
+      <form style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="form-group">
+          <label style="font-size: 12px; font-weight: 700; color: var(--texto-suave);">Nombre y apellido</label>
+          <input type="text" placeholder="Tu nombre" style="padding: 11px 13px; border-radius: 12px; border: 1px solid var(--borde); background: #f8fafc; font-size: 14px; outline: none;">
+        </div>
+        <div class="form-group">
+          <label style="font-size: 12px; font-weight: 700; color: var(--texto-suave);">Correo electrónico</label>
+          <input type="email" placeholder="tu@email.com" style="padding: 11px 13px; border-radius: 12px; border: 1px solid var(--borde); background: #f8fafc; font-size: 14px; outline: none;">
+        </div>
+        <div class="form-group">
+          <label style="font-size: 12px; font-weight: 700; color: var(--texto-suave);">Tu comercio o negocio</label>
+          <input type="text" placeholder="Nombre del negocio (opcional)" style="padding: 11px 13px; border-radius: 12px; border: 1px solid var(--borde); background: #f8fafc; font-size: 14px; outline: none;">
+        </div>
+        <div class="form-group">
+          <label style="font-size: 12px; font-weight: 700; color: var(--texto-suave);">Mensaje</label>
+          <textarea rows="4" placeholder="¿Cómo te podemos ayudar?" style="padding: 11px 13px; border-radius: 12px; border: 1px solid var(--borde); background: #f8fafc; font-size: 14px; outline: none; resize: none;"></textarea>
+        </div>
+        <button type="submit" class="btn-publicar-perfil">Enviar mensaje</button>
+      </form>
+    </div>
+
+    <div class="tarjeta">
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--negro); margin-bottom: 16px;">📍 Datos de contacto</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 12px; font-size: 14px; color: var(--texto); display: flex; align-items: center; gap: 10px;">
+          <span style="color: var(--teal); font-weight: 900;">✉</span>
+          <span>hello@daleplus.com.ar</span>
+        </li>
+        <li style="margin-bottom: 12px; font-size: 14px; color: var(--texto); display: flex; align-items: center; gap: 10px;">
+          <span style="color: var(--teal); font-weight: 900;">📱</span>
+          <span>+54 9 11 2345-6789</span>
+        </li>
+        <li style="margin-bottom: 12px; font-size: 14px; color: var(--texto); display: flex; align-items: center; gap: 10px;">
+          <span style="color: var(--teal); font-weight: 900;">🏢</span>
+          <span>Av. Rivadavia 1234, Merlo, Buenos Aires</span>
+        </li>
+        <li style="margin-bottom: 12px; font-size: 14px; color: var(--texto); display: flex; align-items: center; gap: 10px;">
+          <span style="color: var(--teal); font-weight: 900;">🕒</span>
+          <span>Lunes a Viernes de 9:00 a 18:00</span>
+        </li>
+      </ul>
+      <div style="margin-top: 20px; display: flex; gap: 12px;">
+        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--negro); color: var(--blanco); border-radius: 10px; font-size: 18px; text-decoration: none;">f</a>
+        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--negro); color: var(--blanco); border-radius: 10px; font-size: 18px; text-decoration: none;">📷</a>
+        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--negro); color: var(--blanco); border-radius: 10px; font-size: 18px; text-decoration: none;">💬</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
