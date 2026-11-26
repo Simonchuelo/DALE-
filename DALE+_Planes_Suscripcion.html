@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DALE+ - Planes de Suscripción para Comercios</title>
+<style>
+  :root {
+    --teal: #00b4d8;
+    --teal-dark: #0077b6;
+    --teal-grad: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
+    --negro: #0a0a0a;
+    --blanco: #ffffff;
+    --fondo: #f4f9fb;
+    --texto: #0f172a;
+    --texto-suave: #64748b;
+    --borde: #e3f2f5;
+    --sombra: 0 4px 20px rgba(0,0,0,0.08);
+    --precio: #0077b6;
+    --destacado: #ffb703;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  /* ===== PORTADA ===== */
+  .hero {
+    background: var(--negro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 70px 20px;
+    border-radius: 0 0 40px 40px;
+    box-shadow: var(--sombra);
+  }
+  .hero .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .hero .logo-img {
+    width: 120px;
+    height: auto;
+    display: block;
+  }
+  .hero h1 { font-size: 34px; font-weight: 900; margin: 0 0 12px; }
+  .hero p.sub { font-size: 17px; color: #cbd5e1; max-width: 650px; margin: 0 auto 24px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+  /* ===== INTRO ===== */
+  .intro {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .intro h2 {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--negro);
+    margin-bottom: 12px;
+  }
+  .intro p { color: var(--texto-suave); font-size: 16px; }
+
+  /* ===== TARJETAS DE PRECIOS ===== */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .plan-card {
+    background: var(--blanco);
+    border: 2px solid var(--borde);
+    border-radius: 24px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .plan-card:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+
+  .plan-card.popular {
+    border-color: var(--teal);
+    box-shadow: 0 8px 30px rgba(0,183,216,0.25);
+  }
+  .plan-card.popular::before {
+    content: "MÁS ELEGIDO";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--teal);
+    color: var(--blanco);
+    font-size: 11px;
+    font-weight: 900;
+    padding: 4px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .plan-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    padding: 6px 14px;
+    border-radius: 10px;
+  }
+  .plan-badge.free { background: #e3f2f5; color: var(--teal-dark); }
+  .plan-badge.starter { background: #e0f7fa; color: var(--teal-dark); }
+  .plan-badge.growth { background: #e0f7fa; color: var(--teal-dark); }
+  .plan-badge.premium { background: #fff7e6; color: var(--destacado); }
+
+  .plan-card h3 {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--negro);
+    margin-bottom: 10px;
+  }
+
+  .price {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--negro);
+    margin-bottom: 6px;
+  }
+  .price span {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--texto-suave);
+    margin-left: 4px;
+  }
+
+  .plan-desc {
+    font-size: 14px;
+    color: var(--texto-suave);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .plan-features { list-style: none; padding: 0; margin-bottom: 28px; flex: 1; }
+  .plan-features li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--texto);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .plan-features li .check {
+    color: var(--teal);
+    font-weight: 900;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .plan-features li .not {
+    color: #94a3b8;
+    font-weight: 400;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    text-decoration: line-through;
+  }
+
+  .btn-plan {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: filter 0.2s;
+  }
+  .btn-plan.free {
+    background: var(--negro);
+    color: var(--blanco);
+  }
+  .btn-plan.free:hover { filter: brightness(0.9); }
+  .btn-plan.paid {
+    background: var(--teal-grad);
+    color: var(--blanco);
+  }
+  .btn-plan.paid:hover { filter: brightness(0.95); }
+  .btn-plan.premium {
+    background: var(--destacado);
+    color: var(--negro);
+  }
+  .btn-plan.premium:hover { filter: brightness(0.95); }
+
+  /* ===== COMPARATIVA ===== */
+  .comparativa {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 50px;
+    overflow-x: auto;
+  }
+  .comparativa h2 {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 24px;
+    color: var(--negro);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    text-align: left;
+    padding: 12px 8px;
+    color: var(--texto-suave);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--borde);
+  }
+  td { padding: 12px 8px; border-bottom: 1px solid #f2f2f2; color: var(--texto); }
+  td:first-child { font-weight: 800; color: var(--negro); width: 220px; }
+  .col-free { color: #94a3b8; }
+  .col-paid { color: var(--teal-dark); }
+  .check-yes { color: var(--teal); font-weight: 900; }
+  .check-no { color: #cbd5e1; }
+
+  /* ===== ESTRATEGIA DE VENTA ===== */
+  .venta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .venta-card {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    padding: 28px 24px;
+  }
+  .venta-card h3 {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--negro);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .venta-card .icono {
+    width: 28px; height: 28px;
+    background: var(--teal-grad);
+    color: var(--blanco);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .venta-card p { font-size: 14px; color: var(--texto-suave); margin-bottom: 16px; line-height: 1.5; }
+  .venta-card .paso {
+    font-size: 13px;
+    color: var(--texto);
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .venta-card .paso::before {
+    content: "›";
+    position: absolute;
+    left: 4px;
+    color: var(--teal);
+    font-weight: 900;
+  }
+
+  /* ===== CTA FINAL ===== */
+  .cta {
+    background: var(--teal-grad);
+    color: var(--blanco);
+    border-radius: 24px;
+    padding: 44px 32px;
+    text-align: center;
+  }
+  .cta h3 { font-size: 26px; font-weight: 900; margin-bottom: 10px; }
+  .cta p { font-size: 16px; color: #e2f4f8; margin-bottom: 28px; }
+  .btn-cta {
+    background: var(--blanco);
+    color: var(--negro);
+    padding: 16px 40px;
+    border-radius: 14px;
+    font-weight: 900;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .btn-cta:hover { filter: brightness(0.95); }
+
+  .footer-note { text-align: center; color: var(--texto-suave); font-size: 13px; margin-top: 30px; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 26px; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .venta-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo">
+    <img src="assets/logo-dale.png" alt="DALE+" class="logo-img">
+  </div>
+  <h1>Planes para Comercios</h1>
+  <p class="sub">Eligí el plan que mejor se adapte a tu negocio. Registrarte y publicar tu primera oferta siempre es gratis.</p>
+</div>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <h2>¿Por qué pasar a un plan de pago?</h2>
+    <p>El plan gratuito te permite tener presencia digital en DALE+. Los planes de pago están diseñados para que tu comercio se vea más, venda más y entienda mejor a tus clientes.</p>
+  </div>
+
+  <!-- PLANES -->
+  <section class="plans-grid">
+
+    <!-- Plan Gratuito -->
+    <div class="plan-card">
+      <div class="plan-badge free">Gratis</div>
+      <h3>DALE+ Barrio</h3>
+      <div class="price">$0<span>/mes</span></div>
+      <div class="plan-desc">Para comercios que recién empiezan a visibilizarse digitalmente.</div>
+      <ul class="plan-features">
+        <li><div class="check">✓</div>Perfil comercial básico</li>
+        <li><div class="check">✓</div>Publicá ofertas ilimitadas</li>
+        <li><div class="check">✓</div>Aparecé en el mapa y el inicio</li>
+        <li><div class="check">✓</div>1 imagen por oferta</li>
+        <li><div class="check">✓</div>Estadísticas básicas (vistas)</li>
+        <li><div class="check">✓</div>Registro y uso gratuito</li>
+      </ul>
+      <button class="btn-plan free">Empezar gratis</button>
+    </div>
+
+    <!-- Plan Starter (Más Elegido) -->
+    <div class="plan-card popular">
+      <div class="plan-badge starter">Mensual</div>
+      <h3>DALE+ Barrio+</h3>
+      <div class="price">$2.990<span>/mes</span></div>
+      <div class="plan-desc">Para comercios independientes que quieren destacar y vender más.</div>
+      <ul class="plan-features">
+        <li><div class="check">✓</div>Todo del plan gratuito</li>
+        <li><div class="check">✓</div>Ofertas destacadas en el inicio</li>
+        <li><div class="check">✓</div>Hasta 3 imágenes por oferta</li>
+        <li><div class="check">✓</div>Estadísticas mejoradas (clics y guardados)</li>
+        <li><div class="check">✓</div>Cupones descargables para clientes</li>
+        <li><div class="check">✓</div>Soporte por WhatsApp prioritario</li>
+      </ul>
+      <button class="btn-plan paid">Contratar Barrio+</button>
+    </div>
+
+    <!-- Plan Growth -->
+    <div class="plan-card">
+      <div class="plan-badge growth">Mensual</div>
+      <h3>DALE+ Local</h3>
+      <div class="price">$5.990<span>/mes</span></div>
+      <div class="plan-desc">Para comercios que quieren aparecer primero y atraer más clientes de la zona.</div>
+      <ul class="plan-features">
+        <li><div class="check">✓</div>Todo del plan Barrio+</li>
+        <li><div class="check">✓</div>Publicaciones patrocinadas (aparecen primero)</li>
+        <li><div class="check">✓</div>Cupones ilimitados</li>
+        <li><div class="check">✓</div>Estadísticas avanzadas (horarios pico, zona de influencia)</li>
+        <li><div class="check">✓</div>Publicar en múltiples categorías</li>
+        <li><div class="check">✓</div>Icono más grande en el mapa</li>
+      </ul>
+      <button class="btn-plan paid">Contratar Local</button>
+    </div>
+
+    <!-- Plan Premium -->
+    <div class="plan-card">
+      <div class="plan-badge premium">Mensual</div>
+      <h3>DALE+ Premium</h3>
+      <div class="price">$9.990<span>/mes</span></div>
+      <div class="plan-desc">Para comercios con varias sucursales o que buscan máxima visibilidad.</div>
+      <ul class="plan-features">
+        <li><div class="check">✓</div>Todo del plan Local</li>
+        <li><div class="check">✓</div>Hasta 5 sucursales en una sola cuenta</li>
+        <li><div class="check">✓</div>Panel de administración centralizado</li>
+        <li><div class="check">✓</div>Banner publicitario dentro de la app</li>
+        <li><div class="check">✓</div>Informe mensual personalizado</li>
+        <li><div class="check">✓</div>Gerente de cuenta dedicado</li>
+      </ul>
+      <button class="btn-plan premium">Contratar Premium</button>
+    </div>
+
+  </section>
+
+  <!-- TABLA COMPARATIVA -->
+  <section class="comparativa">
+    <h2>Comparativa de planes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Funcionalidad</th>
+          <th class="col-free">Gratuito</th>
+          <th class="col-paid">Barrio+</th>
+          <th class="col-paid">Local</th>
+          <th class="col-paid">Premium</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Perfil comercial</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Ofertas ilimitadas</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Aparecer en mapa e inicio</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Imágenes por oferta</td>
+          <td>1</td>
+          <td>3</td>
+          <td>5</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>Ofertas destacadas</td>
+          <td class="check-no">✗</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Estadísticas básicas</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Estadísticas avanzadas</td>
+          <td class="check-no">✗</td>
+          <td class="check-no">✗</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Cupones descargables</td>
+          <td class="check-no">✗</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Publicaciones patrocinadas</td>
+          <td class="check-no">✗</td>
+          <td class="check-no">✗</td>
+          <td class="check-yes">✓</td>
+          <td class="check-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Múltiples sucursales</td>
+          <td class="check-no">✗</td>
+          <td class="check-no">✗</td>
+          <td class="check-no">✗</td>
+          <td class="check-yes">✓ (hasta 5)</td>
+        </tr>
+        <tr>
+          <td>Banner en la app</td>
+          <td class="check-no">✗</td>
+          <td class="check-no">✗</td>
+          <td class="check-no">✗</td>
+          <td class="check-yes">✓</td>
+        </tr>
+        <tr>
+          <td>Soporte por WhatsApp</td>
+          <td>Estándar</td>
+          <td class="check-yes">Prioritario</td>
+          <td class="check-yes">Prioritario</td>
+          <td class="check-yes">Gerente dedicado</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ESTRATEGIA DE VENTA -->
+  <section>
+    <h2 style="font-size:22px; font-weight:900; color:var(--negro); margin-bottom:24px;">Cómo ofrecer cada plan a tus clientes</h2>
+    <div class="venta-grid">
+
+      <!-- Estrategia Gratuito -->
+      <div class="venta-card">
+        <h3><span class="icono">🆓</span>Plan Gratuito</h3>
+        <p>Es la puerta de entrada. Ideal para comercios que nunca tuvieron presencia digital o que quieren probar DALE+ sin compromiso.</p>
+        <strong>Cuándo ofrecerlo:</strong> En el primer contacto, cuando el dueño dice "no sé si me sirve" o "no tengo presupuesto".
+        <div style="margin-top:16px;">
+          <div class="paso">Dale de alta su negocio en menos de 5 minutos.</div>
+          <div class="paso">Preguntale cuántas personas pasaron por su local la semana pasada.</div>
+          <div class="paso">Mostrale que con DALE+ puede llegar a vecinos que no conocen su local.</div>
+        </div>
+      </div>
+
+      <!-- Estrategia Barrio+ -->
+      <div class="venta-card">
+        <h3><span class="icono">⭐</span>Plan Barrio+</h3>
+        <p>El plan más elegido. Para comercios que ya entienden el valor de estar en DALE+ y quieren que sus ofertas se vean primero.</p>
+        <strong>Cuándo ofrecerlo:</strong> Cuando el comercio ya tiene algunas ofertas publicadas y ve que recibe visitas, pero quiere más clientes.
+        <div style="margin-top:16px;">
+          <div class="paso">Resaltá que sus ofertas aparecerán en el inicio de la app, arriba de las gratis.</div>
+          <div class="paso">Contá que puede subir hasta 3 imágenes por oferta (ej: producto, precio y cartel del local).</div>
+          <div class="paso">Mostrale las estadísticas de clics para que vea cuántos vecinos se interesan.</div>
+        </div>
+      </div>
+
+      <!-- Estrategia Local -->
+      <div class="venta-card">
+        <h3><span class="icono">🚀</span>Plan Local</h3>
+        <p>Para comercios que quieren dominar su zona. Ideal para negocios con alto flujo o que compiten directamente con cadenas grandes.</p>
+        <strong>Cuándo ofrecerlo:</strong> A comerciantes que ya tienen clientes recurrentes y quieren captar nuevos de cuadras aledañas.
+        <div style="margin-top:16px;">
+          <div class="paso">Explicá que sus publicaciones patrocinadas aparecen primero cuando un vecino busca su categoría.</div>
+          <div class="paso">Destacé el ícono más grande en el mapa: su local se ve antes que el resto.</div>
+          <div class="paso">Ofrezca las estadísticas avanzadas: saber a qué hora hay más búsquedas le ayuda a organizar su personal.</div>
+        </div>
+      </div>
+
+      <!-- Estrategia Premium -->
+      <div class="venta-card">
+        <h3><span class="icono">💎</span>Plan Premium</h3>
+        <p>Para negocios con varias sucursales o comercios grandes que quieren exclusividad y atención personalizada.</p>
+        <strong>Cuándo ofrecerlo:</strong> A dueños de cadenas de barrio, franquicias locales o comercios con 2 o más sucursales.
+        <div style="margin-top:16px;">
+          <div class="paso">Gestionar todas las sucursales desde una sola cuenta, sin crear usuarios separados.</div>
+          <div class="paso">Ofrezca el banner dentro de la app: su negocio es lo primero que ve al abrir DALE+.</div>
+          <div class="paso">Resalte el informe mensual personalizado y el gerente de cuenta dedicado.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta">
+    <h3>¿Listo para hacer crecer tu comercio?</h3>
+    <p>Elegí el plan que más te convenga y empezá a llegar a más vecinos de tu barrio hoy mismo.</p>
+    <a href="#" class="btn-cta">Quiero registrar mi comercio</a>
+  </section>
+
+  <p class="footer-note">DALE+ — Tu barrio. Más oportunidades. · Los precios se expresan en pesos argentinos e incluyen impuestos según corresponda.</p>
+
+</div>
+
+</body>
+</html>
