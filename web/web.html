@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DALE+ - Tu barrio. Más oportunidades.</title>
+<style>
+  /* ============ VARIABLES ============ */
+  :root {
+    --teal: #00b4d8;
+    --teal-dark: #0077b6;
+    --teal-grad: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
+    --negro: #0a0a0a;
+    --blanco: #ffffff;
+    --fondo: #f4f9fb;
+    --texto: #0f172a;
+    --texto-suave: #64748b;
+    --borde: #e3f2f5;
+    --sombra: 0 4px 20px rgba(0,0,0,0.08);
+    --precio: #0077b6;
+    --destacado: #ffb703;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  /* ============ SITE HEADER ============ */
+  .site-header {
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 16px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .site-header .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .site-header .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+  .site-header .logo-img {
+    width: 34px;
+    height: auto;
+    display: block;
+  }
+  .nav-btn {
+    background: var(--teal-grad);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+    transition: filter 0.2s;
+  }
+  .nav-btn:hover { filter: brightness(0.95); }
+  .nav-btn.active {
+    background: var(--destacado);
+    color: var(--negro);
+  }
+
+  /* ============ SECTIONS ============ */
+  .section { display: none; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  /* ============ PRESENTACIÓN ============ */
+  .hero {
+    background: var(--negro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 70px 20px;
+    border-radius: 0 0 40px 40px;
+    box-shadow: var(--sombra);
+    margin-bottom: 50px;
+  }
+  .hero .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .hero .logo-img { width: 120px; height: auto; display: block; }
+  .hero h1 { font-size: 34px; font-weight: 900; margin: 0 0 12px; }
+  .hero p.eslogan { font-size: 20px; color: var(--teal); font-weight: 800; margin-bottom: 24px; }
+  .hero p.sub { font-size: 17px; color: #cbd5e1; max-width: 650px; margin: 0 auto; }
+
+  .seccion-titulo {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--negro);
+    margin: 40px 0 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .seccion-titulo .num {
+    background: var(--teal-grad);
+    color: var(--blanco);
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .lead { font-size: 17px; color: var(--texto-suave); margin-bottom: 28px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .tarjeta {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .tarjeta h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; color: var(--negro); }
+  .tarjeta ul { list-style: none; padding: 0; }
+  .tarjeta ul li {
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: var(--texto);
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .tarjeta ul li .check {
+    color: var(--teal);
+    font-weight: 900;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tarjeta ul li .texto { flex: 1; }
+  .tarjeta ul li .titulo {
+    font-weight: 800;
+    color: var(--negro);
+    font-size: 15px;
+    line-height: 1.3;
+  }
+  .tarjeta ul li .desc {
+    color: var(--texto-suave);
+    font-size: 14px;
+    line-height: 1.4;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ============ CAPTURAS / MOCKUPS ============ */
+  .capturas { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+  .captura {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    display: flex; flex-direction: column;
+  }
+  .captura .cabecera {
+    background: var(--negro);
+    color: var(--blanco);
+    padding: 12px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-weight: 900; font-size: 14px;
+  }
+  .captura .logo-mini { display: flex; align-items: center; gap: 6px; }
+  .captura .logo-mini img { width: 26px; height: auto; display: block; }
+  .captura .cuerpo { padding: 16px; min-height: 320px; display: flex; flex-direction: column; gap: 12px; }
+  .captura .etiqueta { font-size: 11px; font-weight: 800; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 6px; }
+
+  .chip-mini {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 14px;
+    border: 1px solid var(--borde);
+    background: var(--blanco);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--texto-suave);
+  }
+  .chip-mini.activo { background: var(--teal); color: var(--blanco); border-color: var(--teal); }
+
+  .tarjeta-mini {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    padding: 10px;
+    display: flex; gap: 10px;
+  }
+  .tarjeta-mini .icono { font-size: 24px; }
+  .tarjeta-mini .info { flex: 1; }
+  .tarjeta-mini .nombre { font-weight: 800; font-size: 13px; color: var(--negro); }
+  .tarjeta-mini .rub { font-size: 10px; color: var(--texto-suave); text-transform: uppercase; margin-bottom: 4px; }
+  .tarjeta-mini .oferta { font-weight: 700; font-size: 13px; color: var(--teal-dark); }
+  .tarjeta-mini .pie { font-size: 10px; color: var(--texto-suave); display: flex; gap: 6px; align-items: center; margin-top: auto; }
+
+  /* ============ PLANES ============ */
+  .intro {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .intro h2 { font-size: 26px; font-weight: 900; color: var(--negro); margin-bottom: 12px; }
+  .intro p { color: var(--texto-suave); font-size: 16px; }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .plan-card {
+    background: var(--blanco);
+    border: 2px solid var(--borde);
+    border-radius: 24px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .plan-card:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+
+  .plan-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    padding: 6px 14px;
+    border-radius: 10px;
+  }
+  .plan-badge.plan1 { background: #e0f7fa; color: var(--teal-dark); }
+  .plan-badge.plan2 { background: #e0f7fa; color: var(--teal-dark); }
+  .plan-badge.plan3 { background: #fff7e6; color: var(--destacado); }
+
+  .plan-card h3 { font-size: 22px; font-weight: 900; color: var(--negro); margin-bottom: 10px; }
+  .price { font-size: 36px; font-weight: 900; color: var(--negro); margin-bottom: 6px; }
+  .price span { font-size: 16px; font-weight: 400; color: var(--texto-suave); margin-left: 4px; }
+  .plan-desc { font-size: 14px; color: var(--texto-suave); margin-bottom: 24px; line-height: 1.5; }
+
+  .plan-features { list-style: none; padding: 0; margin-bottom: 28px; flex: 1; }
+  .plan-features li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--texto);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .plan-features li .check {
+    color: var(--teal);
+    font-weight: 900;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .plan-features li .not {
+    color: #94a3b8;
+    font-weight: 400;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    text-decoration: line-through;
+  }
+
+  .btn-plan {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: filter 0.2s;
+  }
+  .btn-plan.paid { background: var(--teal-grad); color: var(--blanco); }
+  .btn-plan.paid:hover { filter: brightness(0.95); }
+  .btn-plan.premium { background: var(--destacado); color: var(--negro); }
+  .btn-plan.premium:hover { filter: brightness(0.95); }
+
+  /* ============ COMPARATIVA ============ */
+  .comparativa {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 50px;
+    overflow-x: auto;
+  }
+  .comparativa h2 {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 24px;
+    color: var(--negro);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    text-align: left;
+    padding: 12px 8px;
+    color: var(--texto-suave);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--borde);
+  }
+  td { padding: 12px 8px; border-bottom: 1px solid #f2f2f2; color: var(--texto); }
+  td:first-child { font-weight: 800; color: var(--negro); width: 220px; }
+  .check-yes { color: var(--teal); font-weight: 900; }
+  .check-no { color: #cbd5e1; }
+
+  /* ============ ESTRATEGIA DE VENTA ============ */
+  .venta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .venta-card {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    padding: 28px 24px;
+  }
+  .venta-card h3 {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--negro);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .venta-card .icono {
+    width: 28px; height: 28px;
+    background: var(--teal-grad);
+    color: var(--blanco);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .venta-card p { font-size: 14px; color: var(--texto-suave); margin-bottom: 16px; line-height: 1.5; }
+  .venta-card .paso {
+    font-size: 13px;
+    color: var(--texto);
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .venta-card .paso::before {
+    content: "›";
+    position: absolute;
+    left: 4px;
+    color: var(--teal);
+    font-weight: 900;
+  }
+
+  /* ============ CTA FINAL ============ */
+  .cta {
+    background: var(--teal-grad);
+    color: var(--blanco);
+    border-radius: 24px;
+    padding: 44px 32px;
+    text-align: center;
+  }
+  .cta h3 { font-size: 26px; font-weight: 900; margin-bottom: 10px; }
+  .cta p { font-size: 16px; color: #e2f4f8; margin-bottom: 28px; }
+  .btn-cta {
+    background: var(--blanco);
+    color: var(--negro);
+    padding: 16px 40px;
+    border-radius: 14px;
+    font-weight: 900;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .btn-cta:hover { filter: brightness(0.95); }
+
+  .footer-note { text-align: center; color: var(--texto-suave); font-size: 13px; margin-top: 30px; }
+
+  /* ============ APP DEMO (SCOPED) ============ */
+  .app-demo-section { max-width: 414px; margin: 30px auto 60px; }
+  .app-demo-section .phone {
+    width: 100%;
+    height: 88vh;
+    max-height: 860px;
+    background: var(--blanco);
+    border-radius: 34px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .app-demo-section .screen {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 70px;
+    position: relative;
+    background: var(--blanco);
+  }
+  .app-demo-section .app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: var(--negro);
+    color: var(--blanco);
+  }
+  .app-demo-section .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: -1px;
+  }
+  .app-demo-section .logo-d {
+    background: var(--teal-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 30px;
+  }
+  .app-demo-section .logo-mas { color: var(--blanco); font-size: 28px; line-height: 1; }
+  .app-demo-section .icon-btn {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    color: var(--blanco);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .app-demo-section .icon-btn:active { background: rgba(255,255,255,0.2); }
+
+  .app-demo-section .search-bar {
+    padding: 12px 16px 4px;
+    background: var(--blanco);
+  }
+  .app-demo-section .search-bar input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--borde);
+    background: #f8fafc;
+    font-size: 14px;
+    outline: none;
+  }
+  .app-demo-section .search-bar input:focus { border-color: var(--teal); }
+
+  .app-demo-section .categories {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 0 16px 12px;
+    scrollbar-width: none;
+  }
+  .app-demo-section .categories::-webkit-scrollbar { display: none; }
+  .app-demo-section .chip {
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--borde);
+    background: var(--blanco);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--texto-suave);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .app-demo-section .chip:hover { border-color: var(--teal); color: var(--teal); }
+  .app-demo-section .chip.active { background: var(--teal); color: var(--blanco); border-color: var(--teal); }
+
+  .app-demo-section .section-title {
+    font-size: 16px;
+    font-weight: 800;
+    padding: 0 16px 10px;
+    color: var(--texto);
+  }
+
+  .app-demo-section .promo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 16px 24px;
+  }
+  .app-demo-section .promo-card {
+    background: var(--blanco);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--borde);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.15s;
+    display: flex;
+  }
+  .app-demo-section .promo-card:active { transform: scale(0.98); }
+  .app-demo-section .promo-img {
+    height: 100px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .app-demo-section .promo-img .badge-desc {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--teal);
+    color: var(--blanco);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 7px;
+    border-radius: 6px;
+    z-index: 2;
+  }
+  .app-demo-section .promo-info { padding: 10px 12px; flex: 1; display: flex; flex-direction: column; }
+  .app-demo-section .promo-nombre { font-weight: 800; font-size: 14px; margin-bottom: 2px; color: var(--negro); }
+  .app-demo-section .promo-categoria { font-size: 11px; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 5px; }
+  .app-demo-section .promo-oferta { font-size: 14px; font-weight: 700; margin-bottom: 5px; color: var(--teal-dark); }
+  .app-demo-section .promo-footer { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--texto-suave); margin-top: auto; }
+
+  .app-demo-section .mapa-wrap {
+    position: relative;
+    height: 56vh;
+    background: linear-gradient(180deg, #e3f2f5 0%, #ffffff 100%);
+    border: 1px solid var(--borde);
+    border-radius: 16px;
+    margin: 0 16px 16px 16px;
+    overflow: hidden;
+  }
+  .app-demo-section .mapa-calle {
+    position: absolute;
+    background: #d7e3e8;
+    border-radius: 4px;
+    z-index: 1;
+  }
+  .app-demo-section .mapa-calle.h { height: 10px; left: 5%; right: 5%; }
+  .app-demo-section .mapa-calle.v { width: 10px; top: 10%; bottom: 10%; }
+  .app-demo-section .mapa-usuario {
+    position: absolute;
+    width: 26px; height: 26px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 3px solid var(--blanco);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  .app-demo-section .mapa-marcador {
+    position: absolute;
+    width: 30px; height: 30px;
+    background: #fff;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    border: 2px solid var(--borde);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    z-index: 8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .app-demo-section .mapa-marcador::after {
+    content: "";
+    position: absolute;
+    bottom: -6px; left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid var(--borde);
+  }
+  .app-demo-section .mapa-marcador.almacenes { border-color: var(--teal); background: var(--teal); color: #fff; }
+  .app-demo-section .mapa-marcador.verdulerias { border-color: #2e7d32; background: #2e7d32; color: #fff; }
+  .app-demo-section .mapa-marcador.panaderias { border-color: #ef6c00; background: #ef6c00; color: #fff; }
+  .app-demo-section .mapa-marcador.carnicerias { border-color: #c62828; background: #c62828; color: #fff; }
+  .app-demo-section .mapa-marcador.kioscos { border-color: #7b1fa2; background: #7b1fa2; color: #fff; }
+  .app-demo-section .mapa-marcador.otros { border-color: #6b6b6b; background: #6b6b6b; color: #fff; }
+  .app-demo-section .mapa-info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.95);
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--texto-suave);
+    z-index: 20;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid var(--borde);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .app-demo-section .mapa-info .punto {
+    width: 10px; height: 10px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 2px solid var(--blanco);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .app-demo-section .mapa-controles {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .app-demo-section .mapa-btn {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 19px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .app-demo-section .mapa-btn.activo { background: var(--teal); color: var(--blanco); border-color: var(--teal); }
+  .app-demo-section .popup-mapa {
+    position: absolute;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 10px 12px;
+    min-width: 150px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 30;
+    pointer-events: none;
+    display: none;
+  }
+  .app-demo-section .popup-mapa.visible { display: block; }
+  .app-demo-section .popup-mapa .nombre { font-weight: 800; color: var(--negro); font-size: 14px; margin-bottom: 2px; }
+  .app-demo-section .popup-mapa .rub { font-size: 11px; color: var(--texto-suave); text-transform: uppercase; margin-bottom: 6px; }
+  .app-demo-section .popup-mapa .oferta { font-weight: 700; color: var(--teal-dark); font-size: 13px; margin-bottom: 4px; }
+  .app-demo-section .popup-mapa .dir { font-size: 11px; color: var(--texto-suave); }
+
+  .app-demo-section .form-publicar { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+  .app-demo-section .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .app-demo-section .form-group label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--texto-suave);
+  }
+  .app-demo-section .form-group input,
+  .app-demo-section .form-group select,
+  .app-demo-section .form-group textarea {
+    padding: 11px 13px;
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #f8fafc;
+    font-size: 14px;
+    outline: none;
+    resize: none;
+  }
+  .app-demo-section .btn-publicar {
+    margin-top: 4px;
+    padding: 15px;
+    background: var(--teal-grad);
+    color: var(--blanco);
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .app-demo-section .btn-publicar:disabled { opacity: 0.6; cursor: not-allowed; }
+  .app-demo-section .btn-publicar:hover:not(:disabled) { filter: brightness(1.05); }
+  .app-demo-section .msg {
+    margin-top: 6px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #e0f2f1;
+    color: #00695c;
+    font-size: 13px;
+    font-weight: 600;
+    display: none;
+    text-align: center;
+  }
+
+  .app-demo-section .perfil-card { padding: 20px 16px; }
+  .app-demo-section .perfil-header { text-align: center; margin-bottom: 20px; }
+  .app-demo-section .avatar {
+    width: 72px; height: 72px;
+    background: var(--teal-grad);
+    color: var(--blanco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 900;
+    margin: 0 auto 12px;
+    box-shadow: 0 4px 12px rgba(0,183,216,0.35);
+  }
+  .app-demo-section .perfil-nombre { font-size: 20px; font-weight: 800; color: var(--negro); margin-bottom: 4px; }
+  .app-demo-section .perfil-sub { color: var(--texto-suave); font-size: 14px; margin-bottom: 2px; }
+  .app-demo-section .perfil-rubro { font-size: 13px; color: var(--teal-dark); font-weight: 700; margin-bottom: 16px; }
+  .app-demo-section .perfil-actions { display: flex; gap: 10px; margin-bottom: 22px; }
+  .app-demo-section .btn-outline {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--borde);
+    background: var(--blanco);
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--texto);
+    cursor: pointer;
+  }
+  .app-demo-section .btn-outline:hover { background: #f8fafc; }
+  .app-demo-section .btn-publicar-perfil {
+    width: 100%;
+    padding: 14px;
+    background: var(--teal-grad);
+    color: var(--blanco);
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-bottom: 12px;
+  }
+  .app-demo-section .btn-publicar-perfil:hover { filter: brightness(1.05); }
+  .app-demo-section .btn-sec {
+    width: 100%;
+    padding: 12px;
+    background: var(--negro);
+    color: var(--blanco);
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .app-demo-section .divider { height: 1px; background: var(--borde); margin: 20px 0; }
+  .app-demo-section .login-box { padding: 20px 16px; }
+  .app-demo-section .login-box h3 { font-size: 18px; margin-bottom: 16px; color: var(--negro); }
+  .app-demo-section .login-box p.intro { font-size: 13px; color: var(--texto-suave); margin-bottom: 16px; }
+  .app-demo-section .rol-btn {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 10px;
+    border: 1px solid var(--borde);
+    background: var(--blanco);
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--texto);
+    cursor: pointer;
+    text-align: left;
+    padding-left: 16px;
+  }
+  .app-demo-section .rol-btn:hover { background: #f8fafc; border-color: var(--teal); color: var(--teal); }
+  .app-demo-section .registro-comercio { padding: 16px; }
+  .app-demo-section .registro-comercio h3 { font-size: 17px; margin-bottom: 14px; color: var(--negro); }
+  .app-demo-section .btn-guardar-comercio {
+    width: 100%;
+    padding: 14px;
+    background: var(--teal-grad);
+    color: var(--blanco);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 800;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  .app-demo-section .oferta-propia {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .app-demo-section .oferta-propia .top { display: flex; justify-content: space-between; align-items: baseline; }
+  .app-demo-section .oferta-propia .titulo { font-weight: 800; font-size: 15px; color: var(--negro); }
+  .app-demo-section .oferta-propia .estado {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: #e0f7fa;
+    color: var(--teal-dark);
+  }
+  .app-demo-section .oferta-propia .desc { font-size: 13px; color: var(--texto-suave); margin-bottom: 4px; }
+  .app-demo-section .oferta-propia .footer { display: flex; justify-content: space-between; font-size: 12px; color: var(--texto-suave); }
+  .app-demo-section .vacila {
+    text-align: center;
+    color: var(--texto-suave);
+    padding: 30px 16px;
+    font-size: 14px;
+  }
+  .app-demo-section .vacila .emoji { font-size: 36px; margin-bottom: 8px; display: block; }
+
+  .app-demo-section .bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: var(--blanco);
+    border-top: 1px solid var(--borde);
+    display: flex;
+    z-index: 50;
+    padding: 4px 0;
+  }
+  .app-demo-section .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--texto-suave);
+    padding-top: 2px;
+  }
+  .app-demo-section .nav-item.active { color: var(--teal); }
+
+  .app-demo-section .view { display: none; }
+  .app-demo-section .view.active { display: block; }
+
+  .app-demo-section .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,10,0.5);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .app-demo-section .modal-content {
+    background: var(--blanco);
+    width: 100%;
+    max-width: 400px;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+  }
+  .app-demo-section .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--texto-suave);
+    line-height: 1;
+  }
+  .app-demo-section .modal-imagen { height: 150px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 42px; }
+  .app-demo-section .modal-body { padding: 20px; flex: 1; overflow-y: auto; }
+  .app-demo-section .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 9px;
+    border-radius: 10px;
+    background: #e0f7fa;
+    color: var(--teal-dark);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .app-demo-section .modal-body h2 { font-size: 20px; margin: 0 0 8px; line-height: 1.3; }
+  .app-demo-section .modal-comercio { font-weight: 800; font-size: 15px; color: var(--negro); margin-bottom: 8px; }
+  .app-demo-section .modal-descripcion { font-size: 14px; color: var(--texto-suave); margin-bottom: 12px; line-height: 1.5; }
+  .app-demo-section .modal-precio {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .app-demo-section .precio-original { font-size: 13px; color: var(--texto-suave); text-decoration: line-through; }
+  .app-demo-section .precio-oferta { font-size: 22px; font-weight: 900; color: var(--teal-dark); }
+  .app-demo-section .modal-dato { font-size: 13px; color: var(--texto-suave); margin: 4px 0; display: flex; align-items: center; gap: 6px; }
+  .app-demo-section .modal-actions { display: flex; gap: 8px; padding: 14px 20px; border-top: 1px solid var(--borde); }
+  .app-demo-section .modal-actions button { flex: 1; padding: 11px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer; border: none; }
+  .app-demo-section .modal-actions .btn-outline { background: var(--blanco); border: 1px solid var(--borde); color: var(--texto); }
+  .app-demo-section .modal-actions .btn-outline:hover { background: #f8fafc; }
+  .app-demo-section .modal-actions .btn-primary { background: var(--teal-grad); color: var(--blanco); }
+
+  @media (max-width: 768px) {
+    .site-header .inner { flex-direction: column; gap: 12px; align-items: stretch; }
+    .nav-btn { width: 100%; text-align: center; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .venta-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div class="inner">
+    <div class="logo">
+      <img src="assets/logo-dale.png" alt="DALE+" class="logo-img">
+      <span>DALE+</span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-btn active" onclick="showSection('presentacion', this)">Presentación</button>
+      <button class="nav-btn" onclick="showSection('demo', this)">Demo App</button>
+      <button class="nav-btn" onclick="showSection('planes', this)">Planes</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECCIÓN: PRESENTACIÓN ============ -->
+<section id="presentacion" class="section active">
+  <div class="hero">
+    <div class="logo">
+      <img src="assets/logo-dale.png" alt="DALE+" class="logo-img">
+    </div>
+    <h1>DALE+</h1>
+    <p class="eslogan">Tu barrio. Más oportunidades.</p>
+    <p class="sub">La plataforma digital que conecta a los pequeños comercios de cercanía con los vecinos que viven a pocas cuadras de sus casas.</p>
+  </div>
+
+  <div class="seccion-titulo"><span class="num">1</span>¿Qué es DALE+?</div>
+  <p class="lead">DALE+ es una aplicación móvil que crea un espacio digital donde los comercios de barrio publican ofertas, descuentos, promociones y novedades, y los vecinos las descubren fácilmente cerca de sus hogares.</p>
+  <div style="background: var(--blanco); border-left: 4px solid var(--teal); padding: 16px 20px; border-radius: 0 12px 12px 0; font-style: italic; color: var(--texto-suave); margin-bottom: 30px;">
+    "DALE+ nace para que los pequeños comercios tengan más visibilidad, los vecinos encuentren mejores oportunidades y los barrios crezcan a través del comercio local."
+  </div>
+
+  <div class="seccion-titulo"><span class="num">2</span>El problema que resolvemos</div>
+  <div class="grid-2">
+    <div class="tarjeta">
+      <h3>Para los comercios</h3>
+      <ul>
+        <li><div class="check">✓</div><div class="texto"><div class="titulo">Poco alcance</div><div class="desc">Dependían solo de los clientes que pasan por la puerta.</div></div></li>
+        <li><div class="check">✓</div><div class="texto"><div class="titulo">Sin presupuesto publicitario</div><div class="desc">No podían invertir en publicidad pagada.</div></div></li>
+        <li><div class="check">✓</div><div class="texto"><div class="titulo">Ofertas dispersas</div><div class="desc">Las promociones estaban en distintas redes sociales.</div></div></li>
+      </ul>
+    </div>
+    <div class="tarjeta">
+      <h3>Para los vecinos</h3>
+      <ul>
+        <li><div class="check">✓</div><div class="texto"><div class="titulo">Desconocimiento</div><div class="desc">No sabían qué ofertas existían cerca de sus hogares.</div></div></li>
+        <li><div class="check">✓</div><div class="texto"><div class="titulo">Búsqueda difícil</div><div class="desc">Tenían que buscar promo a promo en distintas redes.</div></div></li>
+        <li><div class="check">✓</div><div class="texto"><div class="titulo">Competencia desleal</div><div class="desc">Dificultades para competir con grandes cadenas y supermercados.</div></div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="seccion-titulo"><span class="num">3</span>Cómo funciona</div>
+  <p class="lead">DALE+ tiene dos tipos de usuarios: comercios y vecinos. Cada uno usa la app de forma diferente.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+    <div>
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--negro); margin-bottom: 14px;">🏪 Para Comercios</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div class="tarjeta" style="padding: 16px;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--teal-dark); margin-bottom: 6px;">1. Registrar negocio</div>
+          <div style="font-size: 13px; color: var(--texto-suave);">Perfil con nombre, dirección, fotos, horarios y rubro.</div>
+        </div>
+        <div class="tarjeta" style="padding: 16px;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--teal-dark); margin-bottom: 6px;">2. Publicar ofertas</div>
+          <div style="font-size: 13px; color: var(--texto-suave);">Título, descuento, imágenes y fecha de vencimiento.</div>
+        </div>
+        <div class="tarjeta" style="padding: 16px;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--teal-dark); margin-bottom: 6px;">3. Llegar a vecinos</div>
+          <div style="font-size: 13px; color: var(--texto-suave);">Promociones visibles en el mapa e inicio de usuarios cercanos.</div>
+        </div>
+        <div class="tarjeta" style="padding: 16px;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--teal-dark); margin-bottom: 6px;">4. Estadísticas</div>
+          <div style="font-size: 13px; color: var(--texto-suave);">Consultá visualizaciones e interés de los clientes.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size: 18px; font-weight: 800; color: var(--negro); margin-bottom: 14px;">👤 Para Vecinos</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div class="tarjeta" style="padding: 16px;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--teal-dark); margin-bottom: 6px;">1. Registro gratis</div>
+          <div style="font-size: 13px; color: var(--texto-suave);">Cuenta gratuita en segundos.</div>
+        </div>
+        <div class="tarjeta" style="padding: 16px;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--teal-dark); margin-bottom: 6px;">2. Explorar barrio</div>
+          <div style="font-size: 13px; color: var(--texto-suave);">Promociones cercanas según tu ubicación.</div>
+        </div>
+        <div class="tarjeta" style="padding: 16px;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--teal-dark); margin-bottom: 6px;">3. Buscar y guardar</div>
+          <div style="font-size: 13px; color: var(--texto-suave);">Filtrá por categoría y guardá favoritas.</div>
+        </div>
+        <div class="tarjeta" style="padding: 16px;">
+          <div style="font-size: 13px; font-weight: 800; color: var(--teal-dark); margin-bottom: 6px;">4. Notificaciones</div>
+          <div style="font-size: 13px; color: var(--texto-suave);">Avisos de nuevas ofertas en tiempo real.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion-titulo"><span class="num">4</span>Pantallas de la aplicación</div>
+  <p class="lead">Así se ve DALE+ desde el celular. A continuación mostramos las pantallas principales y su función.</p>
+  <div class="capturas">
+    <!-- Inicio -->
+    <div class="captura">
+      <div class="cabecera">
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <span>🔔</span>
+      </div>
+      <div class="cuerpo">
+        <div style="font-size: 11px; font-weight: 700; color: var(--texto-suave); text-transform: uppercase;">Buscador</div>
+        <div style="background:#f8fafc; border:1px solid var(--borde); border-radius: 14px; height: 40px; display:flex; align-items:center; padding: 0 12px; font-size: 13px; color: var(--texto-suave);">Buscar comercios, productos u ofertas...</div>
+        <div class="etiqueta">Categorías</div>
+        <div style="display:flex; gap:8px; overflow-x:auto;">
+          <span class="chip-mini activo">Todos</span>
+          <span class="chip-mini">Almacenes</span>
+          <span class="chip-mini">Verdulerías</span>
+          <span class="chip-mini">Panaderías</span>
+          <span class="chip-mini">Carnicerías</span>
+          <span class="chip-mini">Kioscos</span>
+        </div>
+        <div style="font-size: 11px; font-weight: 800; color: var(--texto-suave); text-transform: uppercase; margin-top: 8px;">Destacadas en Merlo</div>
+        <div style="flex:1; display:flex; gap:12px;">
+          <div class="tarjeta-mini">
+            <span class="icono">🛒</span>
+            <div class="info">
+              <div class="nombre">Almacén Don Juan</div>
+              <div class="rub">Almacenes</div>
+              <div class="oferta">20% OFF en azúcar</div>
+              <div class="pie">📍 Av. Libertad 450 · 30 nov</div>
+            </div>
+          </div>
+          <div class="tarjeta-mini">
+            <span class="icono">🥕</span>
+            <div class="info">
+              <div class="nombre">Verdulería La Fresca</div>
+              <div class="rub">Verdulerías</div>
+              <div class="oferta">2x1 en tomates</div>
+              <div class="pie">📍 Rivadavia 1200 · 28 nov</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="captura">
+      <div class="cabecera">
+        <button style="background:none; border:none; color:var(--blanco); font-size:20px; cursor:pointer;">←</button>
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <span>📍</span>
+      </div>
+      <div class="cuerpo">
+        <div style="font-size: 11px; font-weight: 800; color: var(--texto-suave); text-transform: uppercase; margin-top: 4px;">Ubicación simulada · Merlo, Buenos Aires</div>
+        <div style="flex:1; background:#e3f2f5; border-radius: 16px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+          <div style="width:26px; height:26px; background:var(--teal); border-radius:50%; border:3px solid var(--blanco); box-shadow:0 2px 8px rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; font-size:12px; color:#fff; font-weight:900;">Tú</div>
+          <div style="position:absolute; top:20%; left:12%; width:30px; height:30px; background:var(--teal); color:#fff; border-radius:50% 50% 50% 0; transform:rotate(-45deg); display:flex; align-items:center; justify-content:center; font-size:16px; border:2px solid #fff;">🛒</div>
+          <div style="position:absolute; top:45%; left:62%; width:30px; height:30px; background:#2e7d32; color:#fff; border-radius:50% 50% 50% 0; transform:rotate(-45deg); display:flex; align-items:center; justify-content:center; font-size:16px; border:2px solid #fff;">🥕</div>
+          <div style="position:absolute; top:68%; left:28%; width:30px; height:30px; background:#ef6c00; color:#fff; border-radius:50% 50% 50% 0; transform:rotate(-45deg); display:flex; align-items:center; justify-content:center; font-size:16px; border:2px solid #fff;">🥖</div>
+          <div style="position:absolute; bottom:8px; right:8px; width:44px; height:44px; background:var(--teal); color:#fff; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">📍</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perfil cliente -->
+    <div class="captura">
+      <div class="cabecera">
+        <button style="background:none; border:none; color:var(--blanco); font-size:20px; cursor:pointer;">←</button>
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <span>👤</span>
+      </div>
+      <div class="cuerpo">
+        <div style="text-align:center;">
+          <div style="width:64px; height:64px; background:var(--teal-grad); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:32px; font-weight:900; margin:0 auto 12px;">U</div>
+          <div class="nombre" style="font-weight:800; font-size:17px; color:var(--negro);">Vecino DALE+</div>
+          <div style="font-size:13px; color:var(--texto-suave); margin-bottom:16px;">Barrio de Merlo, Buenos Aires</div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button style="flex:1; padding:12px; border:1px solid var(--borde); background:#fff; border-radius:12px; font-weight:700; font-size:13px; color:var(--texto); cursor:pointer;">Mis favoritas</button>
+          <button style="flex:1; padding:12px; border:1px solid var(--borde); background:#fff; border-radius:12px; font-weight:700; font-size:13px; color:var(--texto); cursor:pointer;">Notificaciones</button>
+        </div>
+        <div style="height:1px; background:var(--borde); margin:16px 0;"></div>
+        <div style="font-size: 11px; font-weight: 800; color: var(--texto-suave); text-transform: uppercase; margin-bottom: 10px;">Tu promoción guardada</div>
+        <div class="tarjeta-mini">
+          <span class="icono">❤️</span>
+          <div class="info">
+            <div class="nombre">Verdulería La Fresca</div>
+            <div class="rub">Verdulerías</div>
+            <div class="oferta">2x1 en tomates</div>
+            <div class="pie">📍 Rivadavia 1200 · 28 nov</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perfil comercio -->
+    <div class="captura">
+      <div class="cabecera">
+        <button style="background:none; border:none; color:var(--blanco); font-size:20px; cursor:pointer;">←</button>
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <span>🏪</span>
+      </div>
+      <div class="cuerpo">
+        <div style="text-align:center;">
+          <div style="width:64px; height:64px; background:var(--teal-grad); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:32px; font-weight:900; margin:0 auto 12px;">🏪</div>
+          <div class="nombre" style="font-weight:800; font-size:17px; color:var(--negro);">Mi Comercio</div>
+          <div style="font-size:13px; color:var(--texto-suave); margin-bottom:4px;">Merlo, Buenos Aires</div>
+          <div style="font-size:13px; color:var(--teal-dark); font-weight:800; margin-bottom:18px;">Almacenes</div>
+        </div>
+        <button style="width:100%; padding:14px; background:var(--teal-grad); color:#fff; border:none; border-radius:14px; font-weight:800; font-size:16px; cursor:pointer;">+ Publicar nueva oferta</button>
+        <button style="width:100%; padding:12px; border:1px solid var(--borde); background:#fff; border-radius:12px; font-weight:700; font-size:13px; color:var(--texto); cursor:pointer; margin-top:8px;">Editar perfil del negocio</button>
+        <div style="height:1px; background:var(--borde); margin:16px 0;"></div>
+        <div style="font-weight:800; font-size:14px; margin-bottom:10px;">Horarios de atención</div>
+        <div style="font-size:13px; color:var(--texto-suave); margin-bottom:4px; font-weight:700;">Lunes a Viernes</div>
+        <div style="font-size:13px; color:var(--texto-suave); margin-bottom:16px;">9:00 - 20:00</div>
+        <div style="font-weight:800; font-size:14px; margin-bottom:8px;">Tus ofertas activas</div>
+        <div style="text-align:center; padding:16px 0; color:var(--texto-suave); font-size:13px;">
+          <div style="font-size:28px; margin-bottom:6px;">📭</div>
+          Aún no tenés ofertas publicadas.
+        </div>
+      </div>
+    </div>
+
+    <!-- Publicar oferta -->
+    <div class="captura">
+      <div class="cabecera">
+        <button style="background:none; border:none; color:var(--blanco); font-size:20px; cursor:pointer;">←</button>
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <span>←</span>
+      </div>
+      <div class="cuerpo">
+        <div style="font-size: 11px; font-weight: 700; color: var(--texto-suave);">Nombre del comercio</div>
+        <div style="background:#f8fafc; border:1px solid var(--borde); border-radius: 10px; height: 36px; display:flex; align-items:center; padding: 0 10px; font-size: 13px; color: var(--texto); margin-bottom: 8px;">Mi Comercio (precargado)</div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--texto-suave);">Categoría</div>
+        <div style="background:#f8fafc; border:1px solid var(--borde); border-radius: 10px; height: 36px; display:flex; align-items:center; padding: 0 10px; font-size: 13px; color: var(--texto-suave); margin-bottom: 8px;">Almacenes (precargado)</div>
+        <div style="font-size: 11px; font-weight: 700; color: var(--texto-suave);">Título de la oferta</div>
+        <input type="text" placeholder="Ej: 2x1 en tomates" style="padding: 8px 10px; border-radius: 10px; border: 1px solid var(--borde); background: #f8fafc; font-size: 13px; margin-bottom: 8px; width: 100%;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--texto-suave);">Descuento</div>
+        <input type="text" placeholder="Ej: 20% OFF o 2 por 1" style="padding: 8px 10px; border-radius: 10px; border: 1px solid var(--borde); background: #f8fafc; font-size: 13px; margin-bottom: 8px; width: 100%;">
+        <button style="width:100%; padding: 12px; background:var(--teal-grad); color:#fff; border:none; border-radius:12px; font-weight:800; font-size:14px; cursor:pointer;">Publicar promoción</button>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top: 20px; font-size: 14px; color: var(--texto-suave);">
+    Las capturas son una simulación funcional del prototipo de DALE+. Algunos elementos están en desarrollo (mapa en tiempo real, notificaciones push, estadísticas avanzadas).
+  </p>
+</section>
+
+<!-- ============ SECCIÓN: DEMO APP ============ -->
+<section id="demo" class="section">
+  <div class="seccion-titulo" style="margin-top:0;">Demo en vivo de la aplicación</div>
+  <p class="lead" style="margin-bottom:24px;">Navegá por la app como lo haría un usuario real. El mapa está centrado en Merlo, Buenos Aires con comercios simulados.</p>
+
+  <div class="app-demo-section">
+    <div class="phone">
+      <div class="screen" id="app">
+        <!-- INICIO -->
+        <section id="view-home" class="view active">
+          <header class="app-header">
+            <div class="logo"><span class="logo-d">D</span><span class="logo-mas">+</span></div>
+            <button class="icon-btn" aria-label="Notificaciones">🔔</button>
+          </header>
+          <div class="search-bar"><input type="text" placeholder="Buscar comercios, productos u ofertas..."></div>
+          <div class="categories">
+            <button class="chip active" onclick="app.filtrar('todos', this)">Todos</button>
+            <button class="chip" onclick="app.filtrar('almacenes', this)">Almacenes</button>
+            <button class="chip" onclick="app.filtrar('verdulerias', this)">Verdulerías</button>
+            <button class="chip" onclick="app.filtrar('panaderias', this)">Panaderías</button>
+            <button class="chip" onclick="app.filtrar('carnicerias', this)">Carnicerías</button>
+            <button class="chip" onclick="app.filtrar('kioscos', this)">Kioscos</button>
+            <button class="chip" onclick="app.filtrar('otros', this)">Más</button>
+          </div>
+          <div class="section-title">Destacadas en Merlo</div>
+          <div id="grid-promociones" class="promo-grid"></div>
+        </section>
+
+        <!-- MAPA -->
+        <section id="view-mapa" class="view">
+          <header class="app-header">
+            <button class="icon-btn" onclick="app.nav('view-home')">←</button>
+            <div class="logo"><span class="logo-d">D</span><span class="logo-mas">+</span></div>
+            <button class="icon-btn" aria-label="Ubicación">📍</button>
+          </header>
+          <div class="mapa-info">
+            <div class="punto"></div>
+            <div>
+              <div style="font-weight:800; color:var(--negro); font-size:13px;">Ubicación simulada</div>
+              <div style="font-size:11px; color:var(--texto-suave);">Merlo, Buenos Aires</div>
+            </div>
+          </div>
+          <div class="mapa-wrap" id="mapa-wrap"></div>
+          <div class="mapa-controles">
+            <button class="mapa-btn activo" onclick="app.centrarUbicacion()" title="Mi ubicación">📍</button>
+            <button class="mapa-btn" onclick="app.alternarCapas()" title="Filtros y capas">⚙️</button>
+          </div>
+          <div id="popup-mapa" class="popup-mapa">
+            <div class="nombre" id="popup-nombre">Nombre</div>
+            <div class="rub" id="popup-rub">Rubro</div>
+            <div class="oferta" id="popup-oferta">Oferta</div>
+            <div class="dir" id="popup-dir">Dirección</div>
+          </div>
+        </section>
+
+        <!-- PUBLICAR OFERTA -->
+        <section id="view-publicar" class="view">
+          <header class="app-header">
+            <div class="logo">Publicar oferta</div>
+            <button class="icon-btn" onclick="app.nav('view-perfil')">←</button>
+          </header>
+          <div id="acceso-publicar" style="padding:24px 16px; text-align:center; color:var(--texto-suave);">
+            <div style="font-size:40px; margin-bottom:12px;">🔒</div>
+            <div style="font-weight:800; margin-bottom:8px;">Solo comercios registrados</div>
+            <div style="font-size:13px; margin-bottom:16px;">Registrá tu negocio desde el Perfil para poder publicar ofertas.</div>
+            <button class="btn-publicar-perfil" onclick="app.nav('view-perfil')">Ir a Perfil</button>
+          </div>
+          <form id="form-publicar" class="form-publicar" style="display:none;" onsubmit="return app.publicar(event)">
+            <div class="form-group">
+              <label>Título de la oferta</label>
+              <input type="text" id="pub-titulo" placeholder="Ej: 2x1 en tomates" required>
+            </div>
+            <div class="form-group">
+              <label>Descuento</label>
+              <input type="text" id="pub-descuento" placeholder="Ej: 20% OFF o 2 por 1" required>
+            </div>
+            <button type="submit" class="btn-publicar">Publicar promoción</button>
+          </form>
+          <div id="msg-publicar" class="msg"></div>
+        </section>
+
+        <!-- PERFIL -->
+        <section id="view-perfil" class="view">
+          <header class="app-header">
+            <div class="logo">Perfil</div>
+            <button class="icon-btn" onclick="app.nav('view-home')">←</button>
+          </header>
+          <!-- Sesión no iniciada -->
+          <div id="perfil-sesion" class="login-box">
+            <h3>Iniciar sesión</h3>
+            <p class="intro">Elegí cómo entrás a DALE+</p>
+            <button class="rol-btn" onclick="app.modoCliente()">👤 Vecino / Cliente</button>
+            <button class="rol-btn" onclick="app.modoRegistroComercio()">🏪 Dueño de comercio</button>
+            <div style="margin-top:14px; font-size:12px; color:var(--texto-suave);">Registro rápido y gratuito.</div>
+          </div>
+          <!-- Registro de comercio -->
+          <div id="perfil-registro-comercio" class="registro-comercio" style="display:none;">
+            <h3>Registrar mi negocio</h3>
+            <div class="form-group">
+              <label>Nombre del comercio</label>
+              <input type="text" id="reg-nombre" placeholder="Ej: Almacén Don Juan">
+            </div>
+            <div class="form-group">
+              <label>Categoría / Rubro</label>
+              <select id="reg-rubro">
+                <option value="almacenes">Almacenes</option>
+                <option value="verdulerias">Verdulerías</option>
+                <option value="panaderias">Panaderías</option>
+                <option value="carnicerias">Carnicerías</option>
+                <option value="kioscos">Kioscos</option>
+                <option value="otros">Otros</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Dirección en Merlo</label>
+              <input type="text" id="reg-direccion" placeholder="Calle y altura">
+            </div>
+            <div class="form-group">
+              <label>Días de atención</label>
+              <input type="text" id="reg-dias" placeholder="Ej: Lunes a Sábados">
+            </div>
+            <div class="form-group">
+              <label>Horario de atención</label>
+              <input type="text" id="reg-horario" placeholder="Ej: 9:00 - 20:00">
+            </div>
+            <button class="btn-guardar-comercio" onclick="app.guardarComercio()">Registrar negocio</button>
+            <button class="btn-outline" style="margin-top:8px;" onclick="app.cancelarRegistro()">Volver</button>
+          </div>
+          <!-- Perfil cliente -->
+          <div id="perfil-cliente" class="perfil-card" style="display:none;">
+            <div class="perfil-header">
+              <div class="avatar">U</div>
+              <div class="perfil-nombre" id="cli-nombre">Vecino DALE+</div>
+              <div class="perfil-sub">Barrio de Merlo, Buenos Aires</div>
+            </div>
+            <div class="perfil-actions">
+              <button class="btn-outline" onclick="app.misFavoritas()">Mis favoritas</button>
+              <button class="btn-outline" onclick="app.misNotificaciones()">Notificaciones</button>
+            </div>
+            <div class="divider"></div>
+            <div style="font-size: 11px; font-weight: 800; color: var(--texto-suave); text-transform: uppercase; margin-bottom: 10px;">Tu promoción guardada</div>
+            <div class="oferta-propia">
+              <div class="top">
+                <div class="titulo">2x1 en tomates</div>
+                <div class="estado">Guardada</div>
+              </div>
+              <div class="desc">Tomates redondos de huerta local.</div>
+              <div class="footer">
+                <span>Verdulerías</span>
+                <span>📍 Rivadavia 1200 · 28 nov</span>
+              </div>
+            </div>
+            <button class="btn-sec" onclick="app.cerrarSesion()">Cerrar sesión</button>
+          </div>
+          <!-- Perfil comercio -->
+          <div id="perfil-comercio" class="perfil-card" style="display:none;">
+            <div class="perfil-header">
+              <div class="avatar">🏪</div>
+              <div class="perfil-nombre" id="emp-nombre">Mi Comercio</div>
+              <div class="perfil-sub" id="emp-direccion">Merlo, Buenos Aires</div>
+              <div class="perfil-rubro" id="emp-rubro">Rubro</div>
+            </div>
+            <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--borde);">
+              <div style="font-weight:800; font-size:14px; margin-bottom:8px; color:var(--negro);">Horarios de atención</div>
+              <div id="emp-dias" style="font-size:13px; color:var(--texto-suave); font-weight:700;">Lunes a Viernes</div>
+              <div id="emp-horario" style="font-size:13px; color:var(--texto-suave); margin-top:2px;">9:00 - 20:00</div>
+            </div>
+            <button class="btn-publicar-perfil" onclick="app.abrirPublicarDesdePerfil()">+ Publicar nueva oferta</button>
+            <button class="btn-outline" onclick="app.editarPerfilComercio()">Editar perfil del negocio</button>
+            <div class="divider"></div>
+            <div style="font-weight:800; font-size:15px; margin-bottom:10px;">Tus ofertas activas</div>
+            <div id="lista-ofertas-propias"></div>
+            <div class="vacila" style="display:none;" id="vacila-ofertas">
+              <span class="emoji">📭</span>
+              Aún no tenés ofertas publicadas. Publicá tu primera promoción para llegar a los vecinos de Merlo.
+            </div>
+            <button class="btn-sec" onclick="app.cerrarSesion()">Cerrar sesión</button>
+          </div>
+        </section>
+
+        <!-- MODAL DETALLE -->
+        <div id="modal-detalle" class="modal">
+          <div class="modal-content">
+            <button class="modal-close" onclick="app.cerrarModal()">×</button>
+            <div id="modal-imagen" class="modal-imagen">📦</div>
+            <div class="modal-body">
+              <span id="modal-badge" class="badge">Destacada</span>
+              <h2 id="modal-titulo">Título de la oferta</h2>
+              <div id="modal-comercio" class="modal-comercio">Nombre del comercio</div>
+              <p id="modal-descripcion">Descripción de la promoción.</p>
+              <div class="modal-precio">
+                <span id="modal-precio-orig" class="precio-original">$1.000</span>
+                <span id="modal-precio-oferta" class="precio-oferta">$800</span>
+              </div>
+              <div class="modal-dato">📍 <span id="modal-direccion">Merlo, Buenos Aires</span></div>
+              <div class="modal-dato">📅 <span id="modal-vencimiento">Vence pronto</span></div>
+              <div class="modal-actions">
+                <button class="btn-outline" onclick="app.cerrarModal()">Compartir</button>
+                <button class="btn-primary">Guardar promoción</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="bottom-nav">
+        <button class="nav-item active" onclick="app.nav('view-home')">🏠<br>Inicio</button>
+        <button class="nav-item" onclick="app.nav('view-mapa')">🗺️<br>Mapa</button>
+        <button class="nav-item" onclick="app.nav('view-perfil')">👤<br>Perfil</button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECCIÓN: PLANES ============ -->
+<section id="planes" class="section">
+  <div class="intro">
+    <h2>Planes para comercios (Regla de los 3)</h2>
+    <p>Elegí el plan que mejor se adapte a tu negocio. No hay plan gratuito permanente: DALE+ se financia con los comercios que eligen crecer en la plataforma.</p>
+  </div>
+
+  <div class="plans-grid">
+    <!-- Plan 1 -->
+    <div class="plan-card">
+      <div class="plan-badge plan1">Plan 1 de 3</div>
+      <h3>DALE+ Barrio+</h3>
+      <div class="price">$2.990<span>/mes</span></div>
+      <div class="plan-desc">Para comercios independientes que quieren destacar y vender más en su zona.</div>
+      <ul class="plan-features">
+        <li><div class="check">✓</div>Perfil comercial completo</li>
+        <li><div class="check">✓</div>Ofertas destacadas en el inicio</li>
+        <li><div class="check">✓</div>Hasta 3 imágenes por oferta</li>
+        <li><div class="check">✓</div>Estadísticas mejoradas (clics y guardados)</li>
+        <li><div class="check">✓</div>Cupones descargables para clientes</li>
+        <li><div class="check">✓</div>Soporte por WhatsApp prioritario</li>
+      </ul>
+      <button class="btn-plan paid">Elegir Barrio+</button>
+    </div>
+
+    <!-- Plan 2 -->
+    <div class="plan-card">
+      <div class="plan-badge plan2">Plan 2 de 3</div>
+      <h3>DALE+ Local</h3>
+      <div class="price">$5.990<span>/mes</span></div>
+      <div class="plan-desc">Para comercios que quieren aparecer primero y atraer más clientes de la zona.</div>
+      <ul class="plan-features">
+        <li><div class="check">✓</div>Todo del plan Barrio+</li>
+        <li><div class="check">✓</div>Publicaciones patrocinadas (aparecen primero)</li>
+        <li><div class="check">✓</div>Cupones ilimitados</li>
+        <li><div class="check">✓</div>Estadísticas avanzadas (horarios pico, zona de influencia)</li>
+        <li><div class="check">✓</div>Publicar en múltiples categorías</li>
+        <li><div class="check">✓</div>Ícono más grande en el mapa</li>
+      </ul>
+      <button class="btn-plan paid">Elegir Local</button>
+    </div>
+
+    <!-- Plan 3 -->
+    <div class="plan-card">
+      <div class="plan-badge plan3">Plan 3 de 3</div>
+      <h3>DALE+ Premium</h3>
+      <div class="price">$9.990<span>/mes</span></div>
+      <div class="plan-desc">Para comercios con varias sucursales o que buscan máxima visibilidad exclusiva.</div>
+      <ul class="plan-features">
+        <li><div class="check">✓</div>Todo del plan Local</li>
+        <li><div class="check">✓</div>Hasta 5 sucursales en una sola cuenta</li>
+        <li><div class="check">✓</div>Panel de administración centralizado</li>
+        <li><div class="check">✓</div>Banner publicitario dentro de la app</li>
+        <li><div class="check">✓</div>Informe mensual personalizado</li>
+        <li><div class="check">✓</div>Gerente de cuenta dedicado</li>
+      </ul>
+      <button class="btn-plan premium">Elegir Premium</button>
+    </div>
+  </div>
+
+  <div class="comparativa">
+    <h2>Comparativa de planes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Funcionalidad</th>
+          <th>Barrio+</th>
+          <th>Local</th>
+          <th>Premium</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Perfil comercial completo</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+        <tr><td>Ofertas destacadas en inicio</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+        <tr><td>Imágenes por oferta</td><td>3</td><td>5</td><td>10</td></tr>
+        <tr><td>Estadísticas básicas</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+        <tr><td>Estadísticas avanzadas</td><td class="check-no">✗</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+        <tr><td>Cupones descargables</td><td class="check-yes">✓</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+        <tr><td>Cupones ilimitados</td><td class="check-no">✗</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+        <tr><td>Publicaciones patrocinadas</td><td class="check-no">✗</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+        <tr><td>Ícono grande en el mapa</td><td class="check-no">✗</td><td class="check-yes">✓</td><td class="check-yes">✓</td></tr>
+        <tr><td>Múltiples sucursales</td><td class="check-no">✗</td><td class="check-no">✗</td><td class="check-yes">✓ (hasta 5)</td></tr>
+        <tr><td>Banner en la app</td><td class="check-no">✗</td><td class="check-no">✗</td><td class="check-yes">✓</td></tr>
+        <tr><td>Soporte por WhatsApp</td><td>Prioritario</td><td>Prioritario</td><td>Gerente dedicado</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 style="font-size:22px; font-weight:900; color:var(--negro); margin-bottom:24px;">Cómo ofrecer cada plan</h2>
+  <div class="venta-grid">
+    <div class="venta-card">
+      <h3><span class="icono">⭐</span>Barrio+</h3>
+      <p>El plan de entrada para comercios que ya entienden el valor de estar en DALE+ y quieren que sus ofertas se vean primero.</p>
+      <strong>Cuándo ofrecerlo:</strong> Cuando el comercio ya publica ofertas y ve visitas, pero quiere más clientes.
+      <div style="margin-top:16px;">
+        <div class="paso">Sus ofertas aparecerán en el inicio de la app, arriba de las de otros comercios.</div>
+        <div class="paso">Puede subir hasta 3 imágenes por oferta (producto, precio, cartel del local).</div>
+        <div class="paso">Verá estadísticas de clics para saber cuántos vecinos se interesan.</div>
+      </div>
+    </div>
+    <div class="venta-card">
+      <h3><span class="icono">🚀</span>Local</h3>
+      <p>Para comercios que quieren dominar su zona. Ideal para negocios con alto flujo o que compiten directamente con cadenas grandes.</p>
+      <strong>Cuándo ofrecerlo:</strong> A comerciantes con clientes recurrentes que quieren captar nuevos de cuadras aledañas.
+      <div style="margin-top:16px;">
+        <div class="paso">Sus publicaciones patrocinadas aparecen primero cuando un vecino busca su categoría.</div>
+        <div class="paso">Ícono más grande en el mapa: su local se ve antes que el resto.</div>
+        <div class="paso">Estadísticas avanzadas: saber a qué hora hay más búsquedas le ayuda a organizar su personal.</div>
+      </div>
+    </div>
+    <div class="venta-card">
+      <h3><span class="icono">💎</span>Premium</h3>
+      <p>Para negocios con varias sucursales o comercios grandes que quieren exclusividad y atención personalizada.</p>
+      <strong>Cuándo ofrecerlo:</strong> A dueños de cadenas de barrio, franquicias locales o comercios con 2 o más sucursales.
+      <div style="margin-top:16px;">
+        <div class="paso">Gestionar todas las sucursales desde una sola cuenta, sin crear usuarios separados.</div>
+        <div class="paso">Banner dentro de la app: su negocio es lo primero que ve al abrir DALE+.</div>
+        <div class="paso">Informe mensual personalizado y gerente de cuenta dedicado.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>¿Listo para hacer crecer tu comercio?</h3>
+    <p>Elegí el plan que más te convenga y empezá a llegar a más vecinos de tu barrio hoy mismo.</p>
+    <a href="#" class="btn-cta">Quiero registrar mi comercio</a>
+  </div>
+
+  <p class="footer-note">DALE+ — Tu barrio. Más oportunidades. · Los precios se expresan en pesos argentinos e incluyen impuestos según corresponda.</p>
+</section>
+
+<script>
+  /* ============ NAVEGACIÓN DE SECCIONES ============ */
+  function showSection(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  }
+
+  /* ============ APP DEMO LOGIC ============ */
+  let sesion = null;
+
+  const promociones = [
+    { id: 1, comercio: "Almacén Don Juan", categoria: "almacenes", emoji: "🛒", titulo: "20% OFF en azúcar", desc: "Bolsa de azúcar 1kg a precio especial.", precioOrig: "$1.100", precioOferta: "$880", direccion: "Av. Libertad 450, Merlo", vencimiento: "30 nov", top: "20%", left: "12%" },
+    { id: 2, comercio: "Verdulería La Fresca", categoria: "verdulerias", emoji: "🥕", titulo: "2x1 en tomates", desc: "Tomates redondos de huerta local.", precioOrig: "$600", precioOferta: "$600 (2x1)", direccion: "Rivadavia 1200, Merlo", vencimiento: "28 nov", top: "45%", left: "62%" },
+    { id: 3, comercio: "Panadería El Trigo", categoria: "panaderias", emoji: "🥖", titulo: "Pan de campo a mitad de precio", desc: "Horneado a las 7 de la mañana.", precioOrig: "$400", precioOferta: "$200", direccion: "Mitre 890, Merlo", vencimiento: "27 nov", top: "68%", left: "28%" },
+    { id: 4, comercio: "Carnicería El Gaucho", categoria: "carnicerias", emoji: "🥩", titulo: "15% OFF carne picada", desc: "Ideal para milanesas y empanadas.", precioOrig: "$2.800", precioOferta: "$2.380", direccion: "Belgrano 310, Merlo", vencimiento: "29 nov", top: "30%", left: "78%" },
+    { id: 5, comercio: "Kiosco La Esquina", categoria: "kioscos", emoji: "🍦", titulo: "Helados 2 por $900", desc: "Sabores frutilla y dulce de leche.", precioOrig: "$500 c/u", precioOferta: "2 por $900", direccion: "Corrientes 55, Merlo", vencimiento: "05 dic", top: "55%", left: "45%" }
+  ];
+
+  const app = {
+    nav(id) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) target.classList.add('active');
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      if (id === 'view-home') {
+        const primero = document.querySelector('.nav-item:first-child');
+        if (primero) primero.classList.add('active');
+      }
+      if (id === 'view-perfil') {
+        const ultimo = document.querySelector('.nav-item:last-child');
+        if (ultimo) ultimo.classList.add('active');
+      }
+      if (id === 'view-mapa') setTimeout(() => this.dibujarMapa(), 100);
+      this.cerrarPopupMapa();
+    },
+
+    render() {
+      this.renderGrid(promociones);
+    },
+
+    renderGrid(items) {
+      const grid = document.getElementById('grid-promociones');
+      if (!grid) return;
+      grid.innerHTML = items.map(p => `
+        <div class="promo-card" onclick="app.abrirDetalle(${p.id})">
+          <div class="promo-img"><span class="badge-desc">Oferta</span>${p.emoji}</div>
+          <div class="promo-info">
+            <div class="promo-nombre">${p.comercio}</div>
+            <div class="promo-categoria">${this.nombreCategoria(p.categoria)}</div>
+            <div class="promo-oferta">${p.titulo}</div>
+            <div class="promo-footer">📍 ${p.direccion.split(',')[0]} · ${p.vencimiento}</div>
+          </div>
+        </div>
+      `).join('');
+    },
+
+    nombreCategoria(cat) {
+      const map = { todos: 'Todos', almacenes: 'Almacenes', verdulerias: 'Verdulerías', panaderias: 'Panaderías', carnicerias: 'Carnicerías', kioscos: 'Kioscos', otros: 'Otros' };
+      return map[cat] || cat;
+    },
+
+    filtrar(cat, btn) {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const datos = cat === 'todos' ? promociones : promociones.filter(p => p.categoria === cat);
+      this.renderGrid(datos);
+    },
+
+    abrirDetalle(id) {
+      const p = promociones.find(x => x.id === id);
+      if (!p) return;
+      document.getElementById('modal-imagen').innerHTML = p.emoji;
+      document.getElementById('modal-badge').textContent = this.nombreCategoria(p.categoria);
+      document.getElementById('modal-titulo').textContent = p.titulo;
+      document.getElementById('modal-comercio').textContent = p.comercio;
+      document.getElementById('modal-descripcion').textContent = p.desc;
+      document.getElementById('modal-precio-orig').textContent = p.precioOrig;
+      document.getElementById('modal-precio-oferta').textContent = p.precioOferta;
+      document.getElementById('modal-direccion').textContent = p.direccion;
+      document.getElementById('modal-vencimiento').textContent = `Vence: ${p.vencimiento}`;
+      document.getElementById('modal-detalle').style.display = 'flex';
+    },
+
+    cerrarModal() {
+      document.getElementById('modal-detalle').style.display = 'none';
+    },
+
+    abrirPublicarDesdePerfil() {
+      if (!sesion || sesion.rol !== 'comercio') {
+        alert('Solo comercios registrados pueden publicar.');
+        return;
+      }
+      this.nav('view-publicar');
+      this.mostrarFormularioPublicar(true);
+    },
+
+    mostrarFormularioPublicar(habilitado) {
+      const acceso = document.getElementById('acceso-publicar');
+      const form = document.getElementById('form-publicar');
+      if (acceso) acceso.style.display = habilitado ? 'none' : 'block';
+      if (form) form.style.display = habilitado ? 'block' : 'none';
+    },
+
+    modoCliente() {
+      sesion = { rol: 'cliente', nombre: 'Vecino DALE+', direccion: 'Merlo, Buenos Aires' };
+      this.renderPerfil();
+      this.nav('view-perfil');
+    },
+
+    modoRegistroComercio() {
+      const elSesion = document.getElementById('perfil-sesion');
+      const elRegistro = document.getElementById('perfil-registro-comercio');
+      const elCliente = document.getElementById('perfil-cliente');
+      const elComercio = document.getElementById('perfil-comercio');
+      if (elSesion) elSesion.style.display = 'none';
+      if (elRegistro) elRegistro.style.display = 'block';
+      if (elCliente) elCliente.style.display = 'none';
+      if (elComercio) elComercio.style.display = 'none';
+    },
+
+    cancelarRegistro() {
+      const elSesion = document.getElementById('perfil-sesion');
+      const elRegistro = document.getElementById('perfil-registro-comercio');
+      const elCliente = document.getElementById('perfil-cliente');
+      const elComercio = document.getElementById('perfil-comercio');
+      if (elSesion) elSesion.style.display = 'block';
+      if (elRegistro) elRegistro.style.display = 'none';
+      if (elCliente) elCliente.style.display = 'none';
+      if (elComercio) elComercio.style.display = 'none';
+    },
+
+    guardarComercio() {
+      const nombre = document.getElementById('reg-nombre').value.trim();
+      const rubro = document.getElementById('reg-rubro').value;
+      const direccion = document.getElementById('reg-direccion').value.trim();
+      const dias = document.getElementById('reg-dias').value.trim();
+      const horario = document.getElementById('reg-horario').value.trim();
+      if (!nombre || !direccion) {
+        alert('Completá nombre y dirección del negocio.');
+        return;
+      }
+      sesion = {
+        rol: 'comercio',
+        nombre: nombre,
+        rubro: rubro,
+        direccion: direccion + ', Merlo',
+        dias: dias || 'Lunes a Viernes',
+        horario: horario || '9:00 - 20:00'
+      };
+      this.renderPerfil();
+      this.nav('view-perfil');
+    },
+
+    editarPerfilComercio() {
+      document.getElementById('reg-nombre').value = sesion.nombre;
+      document.getElementById('reg-rubro').value = sesion.rubro;
+      document.getElementById('reg-direccion').value = sesion.direccion.replace(', Merlo', '');
+      document.getElementById('reg-dias').value = sesion.dias || '';
+      document.getElementById('reg-horario').value = sesion.horario || '';
+      this.modoRegistroComercio();
+    },
+
+    cerrarSesion() {
+      sesion = null;
+      const elSesion = document.getElementById('perfil-sesion');
+      const elRegistro = document.getElementById('perfil-registro-comercio');
+      const elCliente = document.getElementById('perfil-cliente');
+      const elComercio = document.getElementById('perfil-comercio');
+      if (elSesion) elSesion.style.display = 'block';
+      if (elRegistro) elRegistro.style.display = 'none';
+      if (elCliente) elCliente.style.display = 'none';
+      if (elComercio) elComercio.style.display = 'none';
+      this.mostrarFormularioPublicar(false);
+      this.nav('view-perfil');
+    },
+
+    renderPerfil() {
+      const elSesion = document.getElementById('perfil-sesion');
+      const elRegistro = document.getElementById('perfil-registro-comercio');
+      const elCliente = document.getElementById('perfil-cliente');
+      const elComercio = document.getElementById('perfil-comercio');
+      if (elSesion) elSesion.style.display = 'none';
+      if (elRegistro) elRegistro.style.display = 'none';
+      if (elCliente) elCliente.style.display = 'none';
+      if (elComercio) elComercio.style.display = 'none';
+      if (!sesion) {
+        if (elSesion) elSesion.style.display = 'block';
+        return;
+      }
+      if (sesion.rol === 'cliente') {
+        const elNombre = document.getElementById('cli-nombre');
+        if (elNombre) elNombre.textContent = sesion.nombre;
+        if (elCliente) elCliente.style.display = 'block';
+      } else if (sesion.rol === 'comercio') {
+        const elNombre = document.getElementById('emp-nombre');
+        const elDir = document.getElementById('emp-direccion');
+        const elRubro = document.getElementById('emp-rubro');
+        const elDias = document.getElementById('emp-dias');
+        const elHorario = document.getElementById('emp-horario');
+        if (elNombre) elNombre.textContent = sesion.nombre;
+        if (elDir) elDir.textContent = sesion.direccion;
+        if (elRubro) elRubro.textContent = this.nombreCategoria(sesion.rubro);
+        if (elDias) elDias.textContent = sesion.dias || 'Lunes a Viernes';
+        if (elHorario) elHorario.textContent = sesion.horario || '9:00 - 20:00';
+        if (elComercio) elComercio.style.display = 'block';
+        this.renderOfertasPropias();
+      }
+    },
+
+    renderOfertasPropias() {
+      const contenedor = document.getElementById('lista-ofertas-propias');
+      const vacila = document.getElementById('vacila-ofertas');
+      if (!contenedor || !vacila) return;
+      const propias = promociones.filter(p => p.comercio === sesion.nombre);
+      if (propias.length === 0) {
+        contenedor.innerHTML = '';
+        vacila.style.display = 'block';
+        return;
+      }
+      vacila.style.display = 'none';
+      contenedor.innerHTML = propias.map(p => `
+        <div class="oferta-propia">
+          <div class="top"><div class="titulo">${p.titulo}</div><div class="estado">${p.vencimiento}</div></div>
+          <div class="desc">${p.desc}</div>
+          <div class="footer"><span>${this.nombreCategoria(p.categoria)}</span><span>${p.precioOferta}</span></div>
+        </div>
+      `).join('');
+    },
+
+    dibujarMapa() {
+      const wrap = document.getElementById('mapa-wrap');
+      if (!wrap) return;
+      wrap.innerHTML = '';
+      const calles = [
+        { clase: 'mapa-calle h', style: 'top: 22%;' },
+        { clase: 'mapa-calle h', style: 'top: 48%;' },
+        { clase: 'mapa-calle h', style: 'top: 75%;' },
+        { clase: 'mapa-calle v', style: 'left: 22%;' },
+        { clase: 'mapa-calle v', style: 'left: 48%;' },
+        { clase: 'mapa-calle v', style: 'left: 75%;' }
+      ];
+      calles.forEach(c => {
+        const el = document.createElement('div');
+        el.className = c.clase;
+        el.style.cssText = c.style;
+        wrap.appendChild(el);
+      });
+      this.marcadorUsuarioMapa = document.createElement('div');
+      this.marcadorUsuarioMapa.className = 'mapa-usuario';
+      this.marcadorUsuarioMapa.style.top = '50%';
+      this.marcadorUsuarioMapa.style.left = '50%';
+      this.marcadorUsuarioMapa.textContent = 'Tú';
+      this.marcadorUsuarioMapa.onclick = () => this.centrarUbicacion();
+      wrap.appendChild(this.marcadorUsuarioMapa);
+      const styles = {
+        almacenes: { color: '#00b4d8', emoji: '🛒' },
+        verdulerias: { color: '#2e7d32', emoji: '🥕' },
+        panaderias: { color: '#ef6c00', emoji: '🥖' },
+        carnicerias: { color: '#c62828', emoji: '🥩' },
+        kioscos: { color: '#7b1fa2', emoji: '🍦' },
+        otros: { color: '#6b6b6b', emoji: '🏪' }
+      };
+      [...promociones].forEach(p => {
+        const s = styles[p.categoria] || styles.otros;
+        const m = document.createElement('div');
+        m.className = 'mapa-marcador ' + p.categoria;
+        m.style.top = p.top;
+        m.style.left = p.left;
+        m.textContent = p.emoji;
+        m.title = p.comercio;
+        m.onclick = (e) => { e.stopPropagation(); this.abrirPopupMapa(p, m); };
+        wrap.appendChild(m);
+      });
+    },
+
+    centrarUbicacion() {
+      const popup = document.getElementById('popup-mapa');
+      if (popup) popup.style.display = 'none';
+    },
+
+    abrirPopupMapa(p, el) {
+      const popup = document.getElementById('popup-mapa');
+      if (!popup) return;
+      document.getElementById('popup-nombre').textContent = p.comercio;
+      document.getElementById('popup-rub').textContent = this.nombreCategoria(p.categoria);
+      document.getElementById('popup-oferta').textContent = p.titulo;
+      document.getElementById('popup-dir').textContent = p.direccion;
+      const rect = el.getBoundingClientRect();
+      const wrapRect = document.getElementById('mapa-wrap').getBoundingClientRect();
+      popup.style.top = (rect.top - wrapRect.top - 110) + 'px';
+      popup.style.left = (rect.left - wrapRect.left + 15) + 'px';
+      popup.style.display = 'block';
+    },
+
+    cerrarPopupMapa() {
+      const popup = document.getElementById('popup-mapa');
+      if (popup) popup.style.display = 'none';
+    },
+
+    alternarCapas() {
+      alert('Filtros y capas del mapa en desarrollo. Próximamente podrás activar/desactivar rubros y ver cobertura de ofertas.');
+    },
+
+    publicar(e) {
+      e.preventDefault();
+      if (!sesion || sesion.rol !== 'comercio') {
+        alert('Solo comercios registrados pueden publicar.');
+        return false;
+      }
+      const btn = document.querySelector('#form-publicar button[type="submit"]');
+      const textoOriginal = btn.textContent;
+      btn.textContent = "Publicando...";
+      btn.disabled = true;
+      const nueva = {
+        id: Date.now(),
+        comercio: sesion.nombre,
+        categoria: sesion.rubro,
+        emoji: '🏪',
+        titulo: document.getElementById('pub-titulo').value,
+        desc: document.getElementById('pub-descuento').value,
+        precioOrig: '$---',
+        precioOferta: document.getElementById('pub-descuento').value,
+        direccion: sesion.direccion,
+        vencimiento: 'Próximamente',
+        top: (30 + Math.random() * 40) + '%',
+        left: (15 + Math.random() * 70) + '%'
+      };
+      setTimeout(() => {
+        promociones.push(nueva);
+        btn.textContent = textoOriginal;
+        btn.disabled = false;
+        document.getElementById('form-publicar').reset();
+        const msg = document.getElementById('msg-publicar');
+        if (msg) { msg.style.display = 'block'; setTimeout(() => { msg.style.display = 'none'; }, 3000); }
+        this.render();
+        this.renderOfertasPropias();
+        this.dibujarMapa();
+        this.nav('view-perfil');
+      }, 1000);
+      return false;
+    },
+
+    misFavoritas() { alert('Tus promociones guardadas aparecerán aquí.'); },
+    misNotificaciones() { alert('Recibirás alertas de nuevas ofertas en Merlo.'); }
+  };
+
+  document.getElementById('modal-detalle').addEventListener('click', (e) => {
+    if (e.target.id === 'modal-detalle') app.cerrarModal();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') app.cerrarModal(); });
+  document.getElementById('mapa-wrap').addEventListener('click', () => { app.cerrarPopupMapa(); });
+
+  app.render();
+</script>
+
+</body>
+</html>
