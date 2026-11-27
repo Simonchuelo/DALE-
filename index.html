@@ -16,6 +16,138 @@
     --sombra: 0 4px 20px rgba(28, 28, 26, 0.08);
   }
 
+  /* ============ UTILIDADES ============ */
+  .eyebrow { font-size: 11px; font-weight: 800; color: var(--gris-sec); text-transform: uppercase; letter-spacing: 0.5px; }
+  .eyebrow-ligera { font-size: 11px; font-weight: 700; color: var(--gris-sec); text-transform: uppercase; }
+  .campo-titulo { font-size: 11px; font-weight: 700; color: var(--gris-sec); }
+  .etiqueta-campo { font-size: 12px; font-weight: 700; color: var(--gris-sec); }
+  .campo { padding: 11px 13px; border-radius: 12px; border: 1px solid var(--papel); background: var(--papel); font-size: 14px; outline: none; resize: none; }
+  .campo:focus, .mock-input:focus { border-color: var(--lima); }
+  .mt-4 { margin-top: 4px; }
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+  .mb-10 { margin-bottom: 10px; }
+  .centro-texto { text-align: center; }
+  .mock-btn { flex: 1; padding: 12px; border: 1px solid var(--papel); background: var(--blanco); border-radius: 12px; font-weight: 700; font-size: 13px; color: var(--oscuro); cursor: pointer; }
+  .mock-btn.ancho { width: 100%; margin-top: 8px; }
+  .mock-btn-lima { width: 100%; padding: 14px; background: var(--lima); color: var(--oscuro); border: none; border-radius: 14px; font-weight: 800; font-size: 16px; cursor: pointer; }
+  .mock-btn-lima.compacto { padding: 12px; border-radius: 12px; font-size: 14px; }
+  .mock-avatar { width: 64px; height: 64px; background: var(--lima); color: var(--oscuro); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 900; margin: 0 auto 12px; }
+  .mock-back { background: none; border: none; color: var(--blanco); font-size: 20px; cursor: pointer; }
+  .mock-divider { height: 1px; background: var(--papel); margin: 16px 0; }
+  .mock-field { background: var(--papel); border: 1px solid var(--papel); border-radius: 10px; height: 36px; display: flex; align-items: center; padding: 0 10px; font-size: 13px; color: var(--gris-sec); margin-bottom: 8px; }
+  .mock-field.oscuro { color: var(--oscuro); }
+  .mock-input { padding: 8px 10px; border-radius: 10px; border: 1px solid var(--papel); background: var(--papel); font-size: 13px; margin-bottom: 8px; width: 100%; outline: none; }
+  .mock-buscar { background: var(--papel); border: 1px solid var(--papel); border-radius: 14px; height: 40px; display: flex; align-items: center; padding: 0 12px; font-size: 13px; color: var(--gris-sec); }
+  .mock-usuario { width: 26px; height: 26px; background: var(--lima); border-radius: 50%; border: 3px solid var(--blanco); box-shadow: 0 2px 8px rgba(28,28,26,0.4); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--oscuro); font-weight: 900; }
+  .mock-pin { position: absolute; width: 30px; height: 30px; background: var(--lima); color: var(--oscuro); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; font-size: 16px; border: 2px solid #fff; }
+  .mock-pin.verde { background: #2e7d32; color: #fff; }
+  .mock-pin.naranja { background: #ef6c00; color: #fff; }
+  .mock-mapa-btn { position: absolute; bottom: 8px; right: 8px; width: 44px; height: 44px; background: var(--lima); color: var(--oscuro); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 2px 8px rgba(28,28,26,0.2); z-index: 2; }
+  .mock-mapa {
+    flex: 1;
+    min-height: 240px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--papel);
+    border-radius: 16px;
+    background:
+      linear-gradient(90deg, transparent 0 22%, #FFFFFF 22% 25%, transparent 25% 50%, #FFFDF2 50% 54%, transparent 54% 78%, #FFFFFF 78% 81%, transparent 81%),
+      linear-gradient(180deg, transparent 0 20%, #FFFFFF 20% 23%, transparent 23% 47%, #FFFDF2 47% 51%, transparent 51% 72%, #FFFFFF 72% 75%, transparent 75%),
+      linear-gradient(180deg, #F7F8F4, #ECEEE7);
+  }
+  .mock-mapa::before {
+    content: "";
+    position: absolute;
+    bottom: -4%; left: -10%;
+    width: 120%; height: 18px;
+    background: rgba(120,170,200,.4);
+    transform: rotate(-6deg);
+    border-radius: 40px;
+  }
+  .mock-mapa::after {
+    content: "";
+    position: absolute;
+    top: 6%; right: 6%;
+    width: 34%; height: 24%;
+    background: rgba(76,145,79,.22);
+    border-radius: 42% 58% 55% 45%;
+  }
+  .mock-mapa .mock-pin, .mock-mapa .mock-usuario, .mock-mapa .mock-mapa-btn { z-index: 2; }
+  .mock-mapa .mock-usuario { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .mock-calle-nombre {
+    position: absolute;
+    font-size: 8px;
+    font-weight: 800;
+    color: var(--gris-sec);
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    z-index: 1;
+  }
+  .mock-calle-nombre.h { top: 47.5%; left: 6%; }
+  .mock-calle-nombre.v { top: 26%; left: 79%; transform: rotate(90deg); transform-origin: left top; }
+  .mock-sub { font-size: 13px; color: var(--gris-sec); margin-bottom: 16px; }
+  .mock-sub.corto { margin-bottom: 4px; }
+  .mock-rubro { font-size: 13px; color: var(--gris-osc); font-weight: 800; margin-bottom: 18px; }
+  .mock-vacio { text-align: center; padding: 16px 0; color: var(--gris-sec); font-size: 13px; }
+  .mock-vacio-icono { font-size: 28px; margin-bottom: 6px; }
+  .nota-centro { text-align: center; margin-top: 20px; font-size: 14px; color: var(--gris-sec); }
+  .nota-pie { text-align: center; font-size: 12px; color: var(--gris-sec); margin-top: 10px; }
+  .link-lima { color: var(--lima); text-decoration: underline; font-weight: 700; }
+  .btn-registro-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--lima);
+    color: var(--oscuro);
+    border: none;
+    border-radius: 12px;
+    padding: 9px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    box-shadow: 0 3px 10px rgba(28,28,26,.12);
+  }
+  .btn-registro-inline:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 18px rgba(28,28,26,.2);
+    filter: brightness(1.03);
+  }
+  .btn-registro-inline:active { transform: translateY(0) scale(.98); }
+  .btn-registro-inline:focus-visible { outline: 3px solid var(--oscuro); outline-offset: 3px; }
+  .seccion-titulo.primero { margin-top: 0; }
+  .lead.corto { margin-bottom: 24px; }
+  .acceso-bloqueado { padding: 24px 16px; text-align: center; color: var(--gris-sec); }
+  .acceso-icono { font-size: 40px; margin-bottom: 12px; }
+  .acceso-titulo { font-weight: 800; margin-bottom: 8px; }
+  .acceso-texto { font-size: 13px; margin-bottom: 16px; }
+  .nota-corta { margin-top: 14px; font-size: 12px; color: var(--gris-sec); }
+  .btn-outline.mt-8 { margin-top: 8px; }
+  .bloque-horarios { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--papel); }
+  .subtitulo { font-weight: 800; font-size: 14px; margin-bottom: 8px; color: var(--oscuro); }
+  .subtitulo.grande { font-size: 15px; margin-bottom: 10px; }
+  .dato-secundario { font-size: 13px; color: var(--gris-sec); font-weight: 700; }
+  .dato-secundario.tenue { font-weight: 400; margin-top: 2px; }
+  .titulo-bloque { font-size: 22px; font-weight: 900; color: var(--oscuro); margin-bottom: 24px; }
+  .contacto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
+  .contacto-grid .tarjeta { display: flex; flex-direction: column; }
+  .contacto-grid .redes { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--papel); }
+  .contacto-grid .form-group { display: flex; flex-direction: column; }
+  .contacto-grid .form-group label { display: block; margin-bottom: 5px; }
+  .contacto-grid .dato-contacto a { color: inherit; text-decoration: none; }
+  .contacto-grid .dato-contacto a:hover { color: var(--gris-osc); text-decoration: underline; }
+  .btn-enviar { width: 100%; }
+  .titulo-tarjeta { font-size: 18px; font-weight: 800; color: var(--oscuro); margin-bottom: 16px; }
+  .texto-suave { font-size: 14px; color: var(--gris-sec); margin-bottom: 20px; }
+  .form-contacto { display: flex; flex-direction: column; gap: 12px; }
+  .lista-simple { list-style: none; padding: 0; }
+  .dato-contacto { margin-bottom: 12px; font-size: 14px; color: var(--oscuro); display: flex; align-items: center; gap: 10px; }
+  .icono-lima { color: var(--lima); font-weight: 900; }
+  .redes { margin-top: 20px; display: flex; gap: 12px; }
+  .red-social { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--oscuro); color: var(--blanco); border-radius: 10px; font-size: 18px; text-decoration: none; }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -48,7 +180,7 @@
     gap: 10px;
   }
   .site-header .logo-img {
-    width: 34px;
+    width: 40.8px;
     height: auto;
     display: block;
   }
@@ -58,8 +190,11 @@
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
-    font-weight: 800;
-    font-size: 14px;
+    font-family: "Segoe UI", Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.3;
+    letter-spacing: 0.2px;
     cursor: pointer;
     transition: filter 0.2s;
   }
@@ -89,7 +224,7 @@
     gap: 10px;
     margin-bottom: 16px;
   }
-  .hero .logo-img { width: 120px; height: auto; display: block; }
+  .hero .logo-img { width: 192px; height: auto; display: block; }
   .hero h1 { font-size: 34px; font-weight: 900; margin: 0 0 12px; }
   .hero p.eslogan { font-size: 20px; color: var(--lima); font-weight: 800; margin-bottom: 24px; }
   .hero p.sub { font-size: 17px; color: var(--blanco); max-width: 650px; margin: 0 auto; }
@@ -120,6 +255,39 @@
     box-shadow: 0 2px 8px rgba(28, 28, 26, 0.04);
   }
   .tarjeta h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; color: var(--oscuro); }
+  .flujos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  .flujos-grid::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--gris-sec) 0 4px, transparent 4px 8px);
+    opacity: .35;
+    z-index: 0;
+  }
+  .flujos-grid > * { position: relative; z-index: 1; }
+  .flujos-titulo { grid-column: span 2; font-size: 18px; font-weight: 800; color: var(--oscuro); margin-bottom: 0; }
+  @media (min-width: 769px) {
+    .flujos-grid .c1 { grid-area: 2 / 1; }
+    .flujos-grid .c2 { grid-area: 2 / 2; }
+    .flujos-grid .c3 { grid-area: 3 / 1; }
+    .flujos-grid .c4 { grid-area: 3 / 2; }
+    .flujos-grid .v1 { grid-area: 2 / 3; }
+    .flujos-grid .v2 { grid-area: 2 / 4; }
+    .flujos-grid .v3 { grid-area: 3 / 3; }
+    .flujos-grid .v4 { grid-area: 3 / 4; }
+  }
+  .paso-titulo { font-size: 13px; font-weight: 800; color: var(--gris-osc); margin-bottom: 6px; }
+  .paso-desc { font-size: 13px; color: var(--gris-sec); }
+  .paso-card { padding: 16px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .paso-card:hover { transform: scale(1.03); box-shadow: var(--sombra); }
   .tarjeta ul { list-style: none; padding: 0; }
   .tarjeta ul li {
     margin-bottom: 16px;
@@ -232,10 +400,9 @@
     margin-bottom: 16px;
     padding: 6px 14px;
     border-radius: 10px;
+    background: var(--papel);
+    color: var(--gris-osc);
   }
-  .plan-badge.plan1 { background: var(--papel); color: var(--gris-osc); }
-  .plan-badge.plan2 { background: var(--papel); color: var(--gris-osc); }
-  .plan-badge.plan3 { background: var(--papel); color: var(--gris-osc); }
 
   .plan-card h3 { font-size: 22px; font-weight: 900; color: var(--oscuro); margin-bottom: 10px; }
   .price { font-size: 36px; font-weight: 900; color: var(--oscuro); margin-bottom: 6px; }
@@ -273,12 +440,11 @@
     font-size: 15px;
     cursor: pointer;
     border: none;
+    background: var(--lima);
+    color: var(--oscuro);
     transition: filter 0.2s;
   }
-  .btn-plan.paid { background: var(--lima); color: var(--oscuro); }
-  .btn-plan.paid:hover { filter: brightness(0.95); }
-  .btn-plan.premium { background: var(--lima); color: var(--oscuro); }
-  .btn-plan.premium:hover { filter: brightness(0.95); }
+  .btn-plan:hover { filter: brightness(0.95); }
 
   /* ============ COMPARATIVA ============ */
   .comparativa {
@@ -397,6 +563,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
   .comercio-item img {
     width: 100%;
@@ -404,7 +571,41 @@
     object-fit: cover;
     background: var(--papel);
     display: block;
+    transition: transform .25s ease;
   }
+  .comercio-item:hover img { transform: scale(1.04); }
+  .comercio-oferta {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 160px;
+    padding: 14px;
+    background: linear-gradient(180deg, rgba(28,28,26,.92), rgba(28,28,26,.78));
+    color: var(--blanco);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 6px;
+    text-align: left;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform .25s ease, opacity .25s ease;
+    z-index: 2;
+  }
+  .comercio-item:hover .comercio-oferta { opacity: 1; transform: translateY(0); }
+  .comercio-oferta .etiqueta {
+    background: var(--lima);
+    color: var(--oscuro);
+    border-radius: 8px;
+    padding: 2px 8px;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+  .comercio-oferta strong { font-size: 15px; line-height: 1.25; }
+  .comercio-oferta small { font-size: 11px; color: var(--lima); font-weight: 800; }
   .comercio-item .nombre {
     padding: 12px;
     font-weight: 800;
@@ -586,20 +787,86 @@
   .app-demo-section .mapa-wrap {
     position: relative;
     height: 56vh;
-    background: linear-gradient(180deg, var(--papel) 0%, var(--blanco) 100%);
+    background: #F3F4EF;
     border: 1px solid var(--papel);
     border-radius: 16px;
     margin: 0 16px 16px 16px;
     overflow: hidden;
+    isolation: isolate;
+  }
+  .app-demo-section .mapa-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 82% 16%, rgba(46,125,50,.16) 0 13%, transparent 13.5%),
+      radial-gradient(circle at 18% 86%, rgba(46,125,50,.10) 0 10%, transparent 10.5%),
+      linear-gradient(180deg, #F7F8F4, #ECEEE7);
+  }
+  .app-demo-section .mapa-lienzo {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% 50%;
+    transition: transform .25s ease;
+  }
+  .app-demo-section .mapa-manzana {
+    position: absolute;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(28,28,26,.05);
+    border-radius: 6px;
+  }
+  .app-demo-section .mapa-parque {
+    position: absolute;
+    background: rgba(76,145,79,.24);
+    border-radius: 42% 58% 55% 45%;
+    border: 1px solid rgba(46,125,50,.18);
+  }
+  .app-demo-section .mapa-rio {
+    position: absolute;
+    width: 140%; height: 22px;
+    left: -20%; top: 86%;
+    background: rgba(120,170,200,.38);
+    transform: rotate(-7deg);
+    border-radius: 40px;
   }
   .app-demo-section .mapa-calle {
     position: absolute;
-    background: var(--papel);
+    background: #FFFFFF;
     border-radius: 4px;
     z-index: 1;
+    box-shadow: 0 0 0 1px rgba(28,28,26,.04);
   }
   .app-demo-section .mapa-calle.h { height: 10px; left: 5%; right: 5%; }
   .app-demo-section .mapa-calle.v { width: 10px; top: 10%; bottom: 10%; }
+  .app-demo-section .mapa-calle.principal { height: 16px; background: #FFFDF2; }
+  .app-demo-section .mapa-calle.principal.v { width: 16px; height: auto; }
+  .app-demo-section .mapa-etiqueta {
+    position: absolute;
+    font-size: 9px; font-weight: 800;
+    letter-spacing: .4px;
+    color: var(--gris-sec);
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .app-demo-section .mapa-ruta {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    z-index: 6;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .2s ease;
+  }
+  .app-demo-section .mapa-ruta.visible { opacity: 1; }
+  .app-demo-section .mapa-ruta polyline {
+    fill: none;
+    stroke: var(--oscuro);
+    stroke-width: 2;
+    stroke-dasharray: 4 3;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+    opacity: .7;
+  }
   .app-demo-section .mapa-usuario {
     position: absolute;
     width: 26px; height: 26px;
@@ -615,6 +882,23 @@
     color: #fff;
     font-weight: 900;
     cursor: pointer;
+    isolation: isolate;
+  }
+  .app-demo-section .mapa-usuario::before {
+    content: "";
+    position: absolute;
+    inset: -9px;
+    border-radius: 50%;
+    background: rgba(223,255,0,.4);
+    z-index: -1;
+    animation: pulso-usuario 2s ease-out infinite;
+  }
+  @keyframes pulso-usuario {
+    0% { transform: scale(.6); opacity: .9; }
+    100% { transform: scale(1.7); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .app-demo-section .mapa-usuario::before { animation: none; }
   }
   .app-demo-section .mapa-marcador {
     position: absolute;
@@ -630,6 +914,14 @@
     align-items: center;
     justify-content: center;
     font-size: 16px;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .app-demo-section .mapa-marcador .emoji { display: block; transform: rotate(45deg); }
+  .app-demo-section .mapa-marcador:hover { transform: rotate(-45deg) scale(1.12); }
+  .app-demo-section .mapa-marcador.activo {
+    transform: rotate(-45deg) scale(1.18);
+    box-shadow: 0 0 0 4px rgba(223,255,0,.4), 0 4px 10px rgba(28,28,26,.3);
+    z-index: 9;
   }
   .app-demo-section .mapa-marcador::after {
     content: "";
@@ -649,9 +941,9 @@
   .app-demo-section .mapa-marcador.otros { border-color: #6b6b6b; background: #6b6b6b; color: #fff; }
   .app-demo-section .mapa-info {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
+    top: 76px;
+    left: 26px;
+    right: 26px;
     background: rgba(255,255,255,0.95);
     padding: 10px 14px;
     border-radius: 12px;
@@ -693,6 +985,41 @@
     box-shadow: 0 2px 8px rgba(28, 28, 26, 0.15);
   }
   .app-demo-section .mapa-btn.activo { background: var(--lima); color: var(--oscuro); border-color: var(--lima); }
+  .app-demo-section .mapa-contador { margin-left: auto; font-size: 11px; font-weight: 800; color: var(--oscuro); white-space: nowrap; }
+  .app-demo-section .mapa-zoom {
+    position: absolute;
+    left: 14px; bottom: 14px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .app-demo-section .mapa-zoom .mapa-btn { width: 36px; height: 36px; font-size: 17px; }
+  .app-demo-section .filtros-mapa {
+    position: absolute;
+    left: 14px; right: 14px; bottom: 66px;
+    z-index: 25;
+    display: none;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px;
+    background: rgba(255,255,255,.97);
+    border: 1px solid var(--papel);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(28,28,26,.16);
+  }
+  .app-demo-section .filtros-mapa.visible { display: flex; }
+  .app-demo-section .filtros-mapa button {
+    padding: 6px 10px;
+    border-radius: 14px;
+    border: 1px solid var(--papel);
+    background: var(--blanco);
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gris-sec);
+    cursor: pointer;
+  }
+  .app-demo-section .filtros-mapa button.activo { background: var(--lima); color: var(--oscuro); border-color: var(--lima); }
   .app-demo-section .popup-mapa {
     position: absolute;
     background: var(--blanco);
@@ -785,19 +1112,7 @@
     cursor: pointer;
   }
   .app-demo-section .btn-outline:hover { background: var(--papel); }
-  .app-demo-section .btn-publicar-perfil {
-    width: 100%;
-    padding: 14px;
-    background: var(--lima);
-    color: var(--oscuro);
-    border: none;
-    border-radius: 14px;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-    margin-bottom: 12px;
-  }
-  .app-demo-section .btn-publicar-perfil:hover { filter: brightness(1.05); }
+  .app-demo-section .btn-publicar-perfil { width: 100%; padding: 14px; font-size: 16px; margin-bottom: 12px; }
   .app-demo-section .btn-sec {
     width: 100%;
     padding: 12px;
@@ -901,7 +1216,7 @@
   }
   .app-demo-section .nav-item.active { color: var(--lima); }
 
-  .app-demo-section .view { display: none; }
+  .app-demo-section .view { display: none; position: relative; }
   .app-demo-section .view.active { display: block; }
 
   .app-demo-section .modal {
@@ -973,6 +1288,8 @@
     .hero h1 { font-size: 26px; }
     .plans-grid { grid-template-columns: 1fr; }
     .venta-grid { grid-template-columns: 1fr; }
+    .flujos-grid { grid-template-columns: 1fr 1fr; }
+    .flujos-grid::after { display: none; }
   }
 </style>
 </head>
@@ -981,13 +1298,13 @@
 <div class="site-header">
   <div class="inner">
     <div class="logo">
-      <img src="assets/logo-dale.png" alt="DALE+" class="logo-img">
+      <img src="assets/logo-dale.png" alt="DALE+" class="logo-img" data-emoji="D+">
     </div>
     <div class="nav-links">
-      <button class="nav-btn active" onclick="showSection('presentacion', this)">Presentación</button>
-      <button class="nav-btn" onclick="showSection('demo', this)">Demo App</button>
-      <button class="nav-btn" onclick="showSection('planes', this)">Planes</button>
-      <button class="nav-btn" onclick="showSection('contacto', this)">Contacto</button>
+      <button class="nav-btn active" data-section="presentacion">Presentación</button>
+      <button class="nav-btn" data-section="demo">Demo App</button>
+      <button class="nav-btn" data-section="planes">Planes</button>
+      <button class="nav-btn" data-section="contacto">Contacto</button>
     </div>
   </div>
 </div>
@@ -996,7 +1313,7 @@
 <section id="presentacion" class="section active">
   <div class="hero">
     <div class="logo">
-      <img src="assets/logo-dale.png" alt="DALE+" class="logo-img">
+      <img src="assets/logo-dale.png" alt="DALE+" class="logo-img" data-emoji="D+">
     </div>
     <p class="eslogan">Tu barrio. Más oportunidades.</p>
     <p class="sub">La plataforma digital que conecta a los pequeños comercios de cercanía con los vecinos que viven a pocas cuadras de sus casas.</p>
@@ -1030,48 +1347,40 @@
 
   <div class="seccion-titulo"><span class="num">3</span>Cómo funciona</div>
   <p class="lead">DALE+ tiene dos tipos de usuarios: comercios y vecinos. Cada uno usa la app de forma diferente.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
-    <div>
-      <h3 style="font-size: 18px; font-weight: 800; color: var(--oscuro); margin-bottom: 14px;">🏪 Para Comercios</h3>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-        <div class="tarjeta" style="padding: 16px;">
-          <div style="font-size: 13px; font-weight: 800; color: var(--gris-osc); margin-bottom: 6px;">1. Registrar negocio</div>
-          <div style="font-size: 13px; color: var(--gris-sec);">Perfil con nombre, dirección, fotos, horarios y rubro.</div>
-        </div>
-        <div class="tarjeta" style="padding: 16px;">
-          <div style="font-size: 13px; font-weight: 800; color: var(--gris-osc); margin-bottom: 6px;">2. Publicar ofertas</div>
-          <div style="font-size: 13px; color: var(--gris-sec);">Título, descuento, imágenes y fecha de vencimiento.</div>
-        </div>
-        <div class="tarjeta" style="padding: 16px;">
-          <div style="font-size: 13px; font-weight: 800; color: var(--gris-osc); margin-bottom: 6px;">3. Llegar a vecinos</div>
-          <div style="font-size: 13px; color: var(--gris-sec);">Promociones visibles en el mapa e inicio de usuarios cercanos.</div>
-        </div>
-        <div class="tarjeta" style="padding: 16px;">
-          <div style="font-size: 13px; font-weight: 800; color: var(--gris-osc); margin-bottom: 6px;">4. Estadísticas</div>
-          <div style="font-size: 13px; color: var(--gris-sec);">Consultá visualizaciones e interés de los clientes.</div>
-        </div>
-      </div>
+  <div class="flujos-grid">
+    <h3 class="flujos-titulo">🏪 Para Comercios</h3>
+    <h3 class="flujos-titulo">👤 Para Vecinos</h3>
+    <div class="tarjeta paso-card c1">
+      <div class="paso-titulo">1. Registrar negocio</div>
+      <div class="paso-desc">Perfil con nombre, dirección, fotos, horarios y rubro.</div>
     </div>
-    <div>
-      <h3 style="font-size: 18px; font-weight: 800; color: var(--oscuro); margin-bottom: 14px;">👤 Para Vecinos</h3>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-        <div class="tarjeta" style="padding: 16px;">
-          <div style="font-size: 13px; font-weight: 800; color: var(--gris-osc); margin-bottom: 6px;">1. Registro gratis</div>
-          <div style="font-size: 13px; color: var(--gris-sec);">Cuenta gratuita en segundos.</div>
-        </div>
-        <div class="tarjeta" style="padding: 16px;">
-          <div style="font-size: 13px; font-weight: 800; color: var(--gris-osc); margin-bottom: 6px;">2. Explorar barrio</div>
-          <div style="font-size: 13px; color: var(--gris-sec);">Promociones cercanas según tu ubicación.</div>
-        </div>
-        <div class="tarjeta" style="padding: 16px;">
-          <div style="font-size: 13px; font-weight: 800; color: var(--gris-osc); margin-bottom: 6px;">3. Buscar y guardar</div>
-          <div style="font-size: 13px; color: var(--gris-sec);">Filtrá por categoría y guardá favoritas.</div>
-        </div>
-        <div class="tarjeta" style="padding: 16px;">
-          <div style="font-size: 13px; font-weight: 800; color: var(--gris-osc); margin-bottom: 6px;">4. Notificaciones</div>
-          <div style="font-size: 13px; color: var(--gris-sec);">Avisos de nuevas ofertas en tiempo real.</div>
-        </div>
-      </div>
+    <div class="tarjeta paso-card c2">
+      <div class="paso-titulo">2. Publicar ofertas</div>
+      <div class="paso-desc">Título, descuento, imágenes y fecha de vencimiento.</div>
+    </div>
+    <div class="tarjeta paso-card c3">
+      <div class="paso-titulo">3. Llegar a vecinos</div>
+      <div class="paso-desc">Promociones visibles en el mapa e inicio de usuarios cercanos.</div>
+    </div>
+    <div class="tarjeta paso-card c4">
+      <div class="paso-titulo">4. Estadísticas</div>
+      <div class="paso-desc">Consultá visualizaciones e interés de los clientes.</div>
+    </div>
+    <div class="tarjeta paso-card v1">
+      <div class="paso-titulo">1. Registro gratis</div>
+      <div class="paso-desc">Cuenta gratuita en segundos.</div>
+    </div>
+    <div class="tarjeta paso-card v2">
+      <div class="paso-titulo">2. Explorar barrio</div>
+      <div class="paso-desc">Promociones cercanas según tu ubicación.</div>
+    </div>
+    <div class="tarjeta paso-card v3">
+      <div class="paso-titulo">3. Buscar y guardar</div>
+      <div class="paso-desc">Filtrá por categoría y guardá favoritas.</div>
+    </div>
+    <div class="tarjeta paso-card v4">
+      <div class="paso-titulo">4. Notificaciones</div>
+      <div class="paso-desc">Avisos de nuevas ofertas en tiempo real.</div>
     </div>
   </div>
 
@@ -1081,12 +1390,12 @@
     <!-- Inicio -->
     <div class="captura">
       <div class="cabecera">
-        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+" data-emoji="D+"></div>
         <span>🔔</span>
       </div>
       <div class="cuerpo">
-        <div style="font-size: 11px; font-weight: 700; color: var(--gris-sec); text-transform: uppercase;">Buscador</div>
-        <div style="background:var(--papel); border:1px solid var(--papel); border-radius: 14px; height: 40px; display:flex; align-items:center; padding: 0 12px; font-size: 13px; color: var(--gris-sec);">Buscar comercios, productos u ofertas...</div>
+        <div class="eyebrow-ligera">Buscador</div>
+        <div class="mock-buscar">Buscar comercios, productos u ofertas...</div>
         <div class="etiqueta">Categorías</div>
         <div style="display:flex; gap:8px; overflow-x:auto;">
           <span class="chip-mini activo">Todos</span>
@@ -1096,7 +1405,7 @@
           <span class="chip-mini">Carnicerías</span>
           <span class="chip-mini">Kioscos</span>
         </div>
-        <div style="font-size: 11px; font-weight: 800; color: var(--gris-sec); text-transform: uppercase; margin-top: 8px;">Destacadas en Merlo</div>
+        <div class="eyebrow mt-8">Destacadas en Merlo</div>
         <div style="flex:1; display:flex; gap:12px;">
           <div class="tarjeta-mini">
             <span class="icono">🛒</span>
@@ -1123,18 +1432,20 @@
     <!-- Mapa -->
     <div class="captura">
       <div class="cabecera">
-        <button style="background:none; border:none; color:var(--blanco); font-size:20px; cursor:pointer;">←</button>
-        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <button class="mock-back">←</button>
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+" data-emoji="D+"></div>
         <span>📍</span>
       </div>
       <div class="cuerpo">
-        <div style="font-size: 11px; font-weight: 800; color: var(--gris-sec); text-transform: uppercase; margin-top: 4px;">Ubicación simulada · Merlo, Buenos Aires</div>
-        <div style="flex:1; background:var(--papel); border-radius: 16px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-          <div style="width:26px; height:26px; background:var(--lima); border-radius:50%; border:3px solid var(--blanco); box-shadow:0 2px 8px rgba(28,28,26,0.4); display:flex; align-items:center; justify-content:center; font-size:12px; color:#1C1C1A; font-weight:900;">Tú</div>
-          <div style="position:absolute; top:20%; left:12%; width:30px; height:30px; background:var(--lima); color:#1C1C1A; border-radius:50% 50% 50% 0; transform:rotate(-45deg); display:flex; align-items:center; justify-content:center; font-size:16px; border:2px solid #fff;">🛒</div>
-          <div style="position:absolute; top:45%; left:62%; width:30px; height:30px; background:#2e7d32; color:#fff; border-radius:50% 50% 50% 0; transform:rotate(-45deg); display:flex; align-items:center; justify-content:center; font-size:16px; border:2px solid #fff;">🥕</div>
-          <div style="position:absolute; top:68%; left:28%; width:30px; height:30px; background:#ef6c00; color:#fff; border-radius:50% 50% 50% 0; transform:rotate(-45deg); display:flex; align-items:center; justify-content:center; font-size:16px; border:2px solid #fff;">🥖</div>
-          <div style="position:absolute; bottom:8px; right:8px; width:44px; height:44px; background:var(--lima); color:#1C1C1A; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 2px 8px rgba(28,28,26,0.2);">📍</div>
+        <div class="eyebrow mt-4">Ubicación simulada · Merlo, Buenos Aires</div>
+        <div class="mock-mapa">
+          <span class="mock-calle-nombre h">Av. Rivadavia</span>
+          <span class="mock-calle-nombre v">Merlo</span>
+          <div class="mock-usuario">Tú</div>
+          <div class="mock-pin" style="top:20%; left:12%;">🛒</div>
+          <div class="mock-pin verde" style="top:45%; left:62%;">🥕</div>
+          <div class="mock-pin naranja" style="top:68%; left:28%;">🥖</div>
+          <div class="mock-mapa-btn">📍</div>
         </div>
       </div>
     </div>
@@ -1142,22 +1453,22 @@
     <!-- Perfil cliente -->
     <div class="captura">
       <div class="cabecera">
-        <button style="background:none; border:none; color:var(--blanco); font-size:20px; cursor:pointer;">←</button>
-        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <button class="mock-back">←</button>
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+" data-emoji="D+"></div>
         <span>👤</span>
       </div>
       <div class="cuerpo">
-        <div style="text-align:center;">
-          <div style="width:64px; height:64px; background:var(--lima); color:#1C1C1A; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:32px; font-weight:900; margin:0 auto 12px;">U</div>
+        <div class="centro-texto">
+          <div class="mock-avatar">U</div>
           <div class="nombre" style="font-weight:800; font-size:17px; color:var(--oscuro);">Vecino DALE+</div>
-          <div style="font-size:13px; color:var(--gris-sec); margin-bottom:16px;">Barrio de Merlo, Buenos Aires</div>
+          <div class="mock-sub">Barrio de Merlo, Buenos Aires</div>
         </div>
         <div style="display:flex; gap:10px;">
-          <button style="flex:1; padding:12px; border:1px solid var(--papel); background:var(--blanco); border-radius:12px; font-weight:700; font-size:13px; color:var(--oscuro); cursor:pointer;">Mis favoritas</button>
-          <button style="flex:1; padding:12px; border:1px solid var(--papel); background:var(--blanco); border-radius:12px; font-weight:700; font-size:13px; color:var(--oscuro); cursor:pointer;">Notificaciones</button>
+          <button class="mock-btn">Mis favoritas</button>
+          <button class="mock-btn">Notificaciones</button>
         </div>
-        <div style="height:1px; background:var(--papel); margin:16px 0;"></div>
-        <div style="font-size: 11px; font-weight: 800; color: var(--gris-sec); text-transform: uppercase; margin-bottom: 10px;">Tu promoción guardada</div>
+        <div class="mock-divider"></div>
+        <div class="eyebrow mb-10">Tu promoción guardada</div>
         <div class="tarjeta-mini">
           <span class="icono">❤️</span>
           <div class="info">
@@ -1173,26 +1484,26 @@
     <!-- Perfil comercio -->
     <div class="captura">
       <div class="cabecera">
-        <button style="background:none; border:none; color:var(--blanco); font-size:20px; cursor:pointer;">←</button>
-        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <button class="mock-back">←</button>
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+" data-emoji="D+"></div>
         <span>🏪</span>
       </div>
       <div class="cuerpo">
-        <div style="text-align:center;">
-          <div style="width:64px; height:64px; background:var(--lima); color:#1C1C1A; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:32px; font-weight:900; margin:0 auto 12px;">🏪</div>
+        <div class="centro-texto">
+          <div class="mock-avatar">🏪</div>
           <div class="nombre" style="font-weight:800; font-size:17px; color:var(--oscuro);">Mi Comercio</div>
-          <div style="font-size:13px; color:var(--gris-sec); margin-bottom:4px;">Merlo, Buenos Aires</div>
-          <div style="font-size:13px; color:var(--gris-osc); font-weight:800; margin-bottom:18px;">Almacenes</div>
+          <div class="mock-sub corto">Merlo, Buenos Aires</div>
+          <div class="mock-rubro">Almacenes</div>
         </div>
-        <button style="width:100%; padding:14px; background:var(--lima); color:#1C1C1A; border:none; border-radius:14px; font-weight:800; font-size:16px; cursor:pointer;">+ Publicar nueva oferta</button>
-        <button style="width:100%; padding:12px; border:1px solid var(--papel); background:var(--blanco); border-radius:12px; font-weight:700; font-size:13px; color:var(--oscuro); cursor:pointer; margin-top:8px;">Editar perfil del negocio</button>
-        <div style="height:1px; background:var(--papel); margin:16px 0;"></div>
+        <button class="mock-btn-lima">+ Publicar nueva oferta</button>
+        <button class="mock-btn ancho">Editar perfil del negocio</button>
+        <div class="mock-divider"></div>
         <div style="font-weight:800; font-size:14px; margin-bottom:10px;">Horarios de atención</div>
         <div style="font-size:13px; color:var(--gris-sec); margin-bottom:4px; font-weight:700;">Lunes a Viernes</div>
-        <div style="font-size:13px; color:var(--gris-sec); margin-bottom:16px;">9:00 - 20:00</div>
+        <div class="mock-sub">9:00 - 20:00</div>
         <div style="font-weight:800; font-size:14px; margin-bottom:8px;">Tus ofertas activas</div>
-        <div style="text-align:center; padding:16px 0; color:var(--gris-sec); font-size:13px;">
-          <div style="font-size:28px; margin-bottom:6px;">📭</div>
+        <div class="mock-vacio">
+          <div class="mock-vacio-icono">📭</div>
           Aún no tenés ofertas publicadas.
         </div>
       </div>
@@ -1201,71 +1512,71 @@
     <!-- Publicar oferta -->
     <div class="captura">
       <div class="cabecera">
-        <button style="background:none; border:none; color:var(--blanco); font-size:20px; cursor:pointer;">←</button>
-        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+"></div>
+        <button class="mock-back">←</button>
+        <div class="logo-mini"><img src="assets/logo-dale.png" alt="DALE+" data-emoji="D+"></div>
         <span>←</span>
       </div>
       <div class="cuerpo">
-        <div style="font-size: 11px; font-weight: 700; color: var(--gris-sec);">Nombre del comercio</div>
-        <div style="background:var(--papel); border:1px solid var(--papel); border-radius: 10px; height: 36px; display:flex; align-items:center; padding: 0 10px; font-size: 13px; color: var(--oscuro); margin-bottom: 8px;">Mi Comercio (precargado)</div>
-        <div style="font-size: 11px; font-weight: 700; color: var(--gris-sec);">Categoría</div>
-        <div style="background:var(--papel); border:1px solid var(--papel); border-radius: 10px; height: 36px; display:flex; align-items:center; padding: 0 10px; font-size: 13px; color: var(--gris-sec); margin-bottom: 8px;">Almacenes (precargado)</div>
-        <div style="font-size: 11px; font-weight: 700; color: var(--gris-sec);">Título de la oferta</div>
-        <input type="text" placeholder="Ej: 2x1 en tomates" style="padding: 8px 10px; border-radius: 10px; border: 1px solid var(--papel); background: var(--papel); font-size: 13px; margin-bottom: 8px; width: 100%;">
-        <div style="font-size: 11px; font-weight: 700; color: var(--gris-sec);">Descuento</div>
-        <input type="text" placeholder="Ej: 20% OFF o 2 por 1" style="padding: 8px 10px; border-radius: 10px; border: 1px solid var(--papel); background: var(--papel); font-size: 13px; margin-bottom: 8px; width: 100%;">
-        <button style="width:100%; padding: 12px; background:var(--lima); color:#1C1C1A; border:none; border-radius:12px; font-weight:800; font-size:14px; cursor:pointer;">Publicar promoción</button>
+        <div class="campo-titulo">Nombre del comercio</div>
+        <div class="mock-field oscuro">Mi Comercio (precargado)</div>
+        <div class="campo-titulo">Categoría</div>
+        <div class="mock-field">Almacenes (precargado)</div>
+        <div class="campo-titulo">Título de la oferta</div>
+        <input type="text" placeholder="Ej: 2x1 en tomates" class="mock-input">
+        <div class="campo-titulo">Descuento</div>
+        <input type="text" placeholder="Ej: 20% OFF o 2 por 1" class="mock-input">
+        <button class="mock-btn-lima compacto">Publicar promoción</button>
       </div>
     </div>
   </div>
 
-  <p style="text-align:center; margin-top: 20px; font-size: 14px; color: var(--gris-sec);">
+  <p class="nota-centro">
     Las capturas son una simulación funcional del prototipo de DALE+. Algunos elementos están en desarrollo (mapa en tiempo real, notificaciones push, estadísticas avanzadas).
   </p>
 
   <div class="seccion-titulo"><span class="num">5</span>Comercios adheridos</div>
   <p class="lead">Estos son algunos de los comercios de cercanía que ya forman parte de DALE+ y publican sus ofertas en nuestra plataforma.</p>
   <div class="comercios-grid">
-    <div class="comercio-item">
-      <img src="comercios/comercio-1.jpg" alt="Comercio adherido 1" onerror="this.src='https://via.placeholder.com/300x200?text=Comercio+1'">
+    <div class="comercio-item" data-rubro="almacenes">
+      <img src="comercios/comercio-1.jpg" alt="Comercio adherido 1" loading="lazy" decoding="async" data-emoji="🛒">
       <div class="nombre">Almacén Don Juan</div>
       <div class="rubro">Almacenes · Merlo</div>
     </div>
-    <div class="comercio-item">
-      <img src="comercios/comercio-2.jpg" alt="Comercio adherido 2" onerror="this.src='https://via.placeholder.com/300x200?text=Comercio+2'">
+    <div class="comercio-item" data-rubro="verdulerias">
+      <img src="comercios/comercio-2.jpg" alt="Comercio adherido 2" loading="lazy" decoding="async" data-emoji="🥕">
       <div class="nombre">Verdulería La Fresca</div>
       <div class="rubro">Verdulerías · Merlo</div>
     </div>
-    <div class="comercio-item">
-      <img src="comercios/comercio-3.jpg" alt="Comercio adherido 3" onerror="this.src='https://via.placeholder.com/300x200?text=Comercio+3'">
+    <div class="comercio-item" data-rubro="panaderias">
+      <img src="comercios/comercio-3.jpg" alt="Comercio adherido 3" loading="lazy" decoding="async" data-emoji="🥖">
       <div class="nombre">Panadería El Trigo</div>
       <div class="rubro">Panaderías · Merlo</div>
     </div>
-    <div class="comercio-item">
-      <img src="comercios/comercio-4.jpg" alt="Comercio adherido 4" onerror="this.src='https://via.placeholder.com/300x200?text=Comercio+4'">
+    <div class="comercio-item" data-rubro="carnicerias">
+      <img src="comercios/comercio-4.jpg" alt="Comercio adherido 4" loading="lazy" decoding="async" data-emoji="🥩">
       <div class="nombre">Carnicería El Gaucho</div>
       <div class="rubro">Carnicerías · Merlo</div>
     </div>
-    <div class="comercio-item">
-      <img src="comercios/comercio-5.jpg" alt="Comercio adherido 5" onerror="this.src='https://via.placeholder.com/300x200?text=Comercio+5'">
+    <div class="comercio-item" data-rubro="kioscos">
+      <img src="comercios/comercio-5.jpg" alt="Comercio adherido 5" loading="lazy" decoding="async" data-emoji="🍦">
       <div class="nombre">Kiosco La Esquina</div>
       <div class="rubro">Kioscos · Merlo</div>
     </div>
-    <div class="comercio-item">
-      <img src="comercios/comercio-6.jpg" alt="Comercio adherido 6" onerror="this.src='https://via.placeholder.com/300x200?text=Comercio+6'">
+    <div class="comercio-item" data-rubro="ferreterias">
+      <img src="comercios/comercio-6.jpg" alt="Comercio adherido 6" loading="lazy" decoding="async" data-emoji="🔧">
       <div class="nombre">Ferretería El Clavo</div>
       <div class="rubro">Ferreterías · Merlo</div>
     </div>
   </div>
-  <p style="text-align:center; font-size: 14px; color: var(--gris-sec); margin-top: 20px;">
-    ¿Tu negocio no está aquí? <a href="javascript:void(0);" onclick="showSection('planes', this)" style="color: var(--lima); text-decoration: underline; font-weight: 700;">Registrá tu comercio</a> y sumate a DALE+.
+  <p class="nota-centro">
+    ¿Tu negocio no está aquí? <button type="button" class="btn-registro-inline" data-section="planes">Registrá tu comercio</button> y sumate a DALE+.
   </p>
 </section>
 
 <!-- ============ SECCIÓN: DEMO APP ============ -->
 <section id="demo" class="section">
-  <div class="seccion-titulo" style="margin-top:0;">Demo en vivo de la aplicación</div>
-  <p class="lead" style="margin-bottom:24px;">Navegá por la app como lo haría un usuario real. El mapa está centrado en Merlo, Buenos Aires con comercios simulados.</p>
+  <div class="seccion-titulo primero">Demo en vivo de la aplicación</div>
+  <p class="lead corto">Navegá por la app como lo haría un usuario real. El mapa está centrado en Merlo, Buenos Aires con comercios simulados.</p>
 
   <div class="app-demo-section">
     <div class="phone">
@@ -1303,11 +1614,24 @@
               <div style="font-weight:800; color:var(--oscuro); font-size:13px;">Ubicación simulada</div>
               <div style="font-size:11px; color:var(--gris-sec);">Merlo, Buenos Aires</div>
             </div>
+            <span class="mapa-contador" id="mapa-contador">5 ofertas cerca</span>
           </div>
           <div class="mapa-wrap" id="mapa-wrap"></div>
+          <div class="mapa-zoom">
+            <button class="mapa-btn" onclick="app.zoomMapa(1)" aria-label="Acercar mapa">+</button>
+            <button class="mapa-btn" onclick="app.zoomMapa(-1)" aria-label="Alejar mapa">−</button>
+          </div>
           <div class="mapa-controles">
             <button class="mapa-btn activo" onclick="app.centrarUbicacion()" title="Mi ubicación">📍</button>
-            <button class="mapa-btn" onclick="app.alternarCapas()" title="Filtros y capas">⚙️</button>
+            <button class="mapa-btn" id="btn-capas" onclick="app.alternarCapas()" title="Filtros y capas">⚙️</button>
+          </div>
+          <div class="filtros-mapa" id="filtros-mapa">
+            <button data-cat="todos" class="activo">Todos</button>
+            <button data-cat="almacenes">Almacenes</button>
+            <button data-cat="verdulerias">Verdulerías</button>
+            <button data-cat="panaderias">Panaderías</button>
+            <button data-cat="carnicerias">Carnicerías</button>
+            <button data-cat="kioscos">Kioscos</button>
           </div>
           <div id="popup-mapa" class="popup-mapa">
             <div class="nombre" id="popup-nombre">Nombre</div>
@@ -1323,10 +1647,10 @@
             <div class="logo">Publicar oferta</div>
             <button class="icon-btn" onclick="app.nav('view-perfil')">←</button>
           </header>
-          <div id="acceso-publicar" style="padding:24px 16px; text-align:center; color:var(--gris-sec);">
-            <div style="font-size:40px; margin-bottom:12px;">🔒</div>
-            <div style="font-weight:800; margin-bottom:8px;">Solo comercios registrados</div>
-            <div style="font-size:13px; margin-bottom:16px;">Registrá tu negocio desde el Perfil para poder publicar ofertas.</div>
+          <div id="acceso-publicar" class="acceso-bloqueado">
+            <div class="acceso-icono">🔒</div>
+            <div class="acceso-titulo">Solo comercios registrados</div>
+            <div class="acceso-texto">Registrá tu negocio desde el Perfil para poder publicar ofertas.</div>
             <button class="btn-publicar-perfil" onclick="app.nav('view-perfil')">Ir a Perfil</button>
           </div>
           <form id="form-publicar" class="form-publicar" style="display:none;" onsubmit="return app.publicar(event)">
@@ -1355,7 +1679,7 @@
             <p class="intro">Elegí cómo entrás a DALE+</p>
             <button class="rol-btn" onclick="app.modoCliente()">👤 Vecino / Cliente</button>
             <button class="rol-btn" onclick="app.modoRegistroComercio()">🏪 Dueño de comercio</button>
-            <div style="margin-top:14px; font-size:12px; color:var(--gris-sec);">Registro rápido y gratuito.</div>
+            <div class="nota-corta">Registro rápido y gratuito.</div>
           </div>
           <!-- Registro de comercio -->
           <div id="perfil-registro-comercio" class="registro-comercio" style="display:none;">
@@ -1388,7 +1712,7 @@
               <input type="text" id="reg-horario" placeholder="Ej: 9:00 - 20:00">
             </div>
             <button class="btn-guardar-comercio" onclick="app.guardarComercio()">Registrar negocio</button>
-            <button class="btn-outline" style="margin-top:8px;" onclick="app.cancelarRegistro()">Volver</button>
+            <button class="btn-outline mt-8" onclick="app.cancelarRegistro()">Volver</button>
           </div>
           <!-- Perfil cliente -->
           <div id="perfil-cliente" class="perfil-card" style="display:none;">
@@ -1398,11 +1722,11 @@
               <div class="perfil-sub">Barrio de Merlo, Buenos Aires</div>
             </div>
             <div class="perfil-actions">
-              <button class="btn-outline" onclick="app.misFavoritas()">Mis favoritas</button>
+              <button class="btn-outline" type="button">Mis favoritas</button>
               <button class="btn-outline" onclick="app.misNotificaciones()">Notificaciones</button>
             </div>
             <div class="divider"></div>
-            <div style="font-size: 11px; font-weight: 800; color: var(--gris-sec); text-transform: uppercase; margin-bottom: 10px;">Tu promoción guardada</div>
+            <div class="eyebrow mb-10">Tu promoción guardada</div>
             <div class="oferta-propia">
               <div class="top">
                 <div class="titulo">2x1 en tomates</div>
@@ -1424,15 +1748,15 @@
               <div class="perfil-sub" id="emp-direccion">Merlo, Buenos Aires</div>
               <div class="perfil-rubro" id="emp-rubro">Rubro</div>
             </div>
-            <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--papel);">
-              <div style="font-weight:800; font-size:14px; margin-bottom:8px; color:var(--oscuro);">Horarios de atención</div>
-              <div id="emp-dias" style="font-size:13px; color:var(--gris-sec); font-weight:700;">Lunes a Viernes</div>
-              <div id="emp-horario" style="font-size:13px; color:var(--gris-sec); margin-top:2px;">9:00 - 20:00</div>
+            <div class="bloque-horarios">
+              <div class="subtitulo">Horarios de atención</div>
+              <div id="emp-dias" class="dato-secundario">Lunes a Viernes</div>
+              <div id="emp-horario" class="dato-secundario tenue">9:00 - 20:00</div>
             </div>
             <button class="btn-publicar-perfil" onclick="app.abrirPublicarDesdePerfil()">+ Publicar nueva oferta</button>
             <button class="btn-outline" onclick="app.editarPerfilComercio()">Editar perfil del negocio</button>
             <div class="divider"></div>
-            <div style="font-weight:800; font-size:15px; margin-bottom:10px;">Tus ofertas activas</div>
+            <div class="subtitulo grande">Tus ofertas activas</div>
             <div id="lista-ofertas-propias"></div>
             <div class="vacila" style="display:none;" id="vacila-ofertas">
               <span class="emoji">📭</span>
@@ -1563,13 +1887,13 @@
     </table>
   </div>
 
-  <h2 style="font-size:22px; font-weight:900; color:var(--oscuro); margin-bottom:24px;">Cómo ofrecer cada plan</h2>
+  <h2 class="titulo-bloque">Cómo ofrecer cada plan</h2>
   <div class="venta-grid">
     <div class="venta-card">
       <h3><span class="icono">⭐</span>Barrio+</h3>
       <p>El plan de entrada para comercios que ya entienden el valor de estar en DALE+ y quieren que sus ofertas se vean primero.</p>
       <strong>Cuándo ofrecerlo:</strong> Cuando el comercio ya publica ofertas y ve visitas, pero quiere más clientes.
-      <div style="margin-top:16px;">
+      <div class="mt-16">
         <div class="paso">Sus ofertas aparecerán en el inicio de la app, arriba de las de otros comercios.</div>
         <div class="paso">Puede subir hasta 3 imágenes por oferta (producto, precio, cartel del local).</div>
         <div class="paso">Verá estadísticas de clics para saber cuántos vecinos se interesan.</div>
@@ -1579,7 +1903,7 @@
       <h3><span class="icono">🚀</span>Local</h3>
       <p>Para comercios que quieren dominar su zona. Ideal para negocios con alto flujo o que compiten directamente con cadenas grandes.</p>
       <strong>Cuándo ofrecerlo:</strong> A comerciantes con clientes recurrentes que quieren captar nuevos de cuadras aledañas.
-      <div style="margin-top:16px;">
+      <div class="mt-16">
         <div class="paso">Sus publicaciones patrocinadas aparecen primero cuando un vecino busca su categoría.</div>
         <div class="paso">Ícono más grande en el mapa: su local se ve antes que el resto.</div>
         <div class="paso">Estadísticas avanzadas: saber a qué hora hay más búsquedas le ayuda a organizar su personal.</div>
@@ -1589,7 +1913,7 @@
       <h3><span class="icono">💎</span>Premium</h3>
       <p>Para negocios con varias sucursales o comercios grandes que quieren exclusividad y atención personalizada.</p>
       <strong>Cuándo ofrecerlo:</strong> A dueños de cadenas de barrio, franquicias locales o comercios con 2 o más sucursales.
-      <div style="margin-top:16px;">
+      <div class="mt-16">
         <div class="paso">Gestionar todas las sucursales desde una sola cuenta, sin crear usuarios separados.</div>
         <div class="paso">Banner dentro de la app: su negocio es lo primero que ve al abrir DALE+.</div>
         <div class="paso">Informe mensual personalizado y gerente de cuenta dedicado.</div>
@@ -1600,14 +1924,14 @@
   <div class="cta">
     <h3>¿Listo para hacer crecer tu comercio?</h3>
     <p>Elegí el plan que más te convenga y empezá a llegar a más vecinos de tu barrio hoy mismo.</p>
-    <a href="#" onclick="showSection('contacto', this)" class="btn-cta">Quiero registrar mi comercio</a>
+    <a href="#contacto" data-section="contacto" class="btn-cta">Quiero registrar mi comercio</a>
   </div>
 
   <p class="footer-note">DALE+ — Tu barrio. Más oportunidades. · Los precios se expresan en pesos argentinos e incluyen impuestos según corresponda.</p>
-  <p style="text-align:center; font-size: 12px; color: var(--gris-sec); margin-top: 10px;">
+  <p class="nota-pie">
     📷 <strong>Nota del logo:</strong> Guarde la imagen del logo como <code>assets/logo-dale.png</code> en la misma carpeta que este archivo para que se muestre correctamente en la web y en las capturas.
   </p>
-  <p style="text-align:center; font-size: 12px; color: var(--gris-sec); margin-top: 10px;">
+  <p class="nota-pie">
     🏪 <strong>Nota de comercios:</strong> Las imágenes de la sección "Comercios adheridos" se esperan en la carpeta <code>comercios/</code> (ej: <code>comercios/comercio-1.jpg</code>). Ajuste los nombres según sus archivos reales.
   </p>
 </section>
@@ -1617,68 +1941,100 @@
   <div class="seccion-titulo"><span class="num">6</span>Contacto</div>
   <p class="lead">¿Tenés consultas sobre DALE+, querés registrar tu comercio o necesitás más información? Escribinos y te respondemos a la brevedad.</p>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+  <div class="contacto-grid">
     <div class="tarjeta">
-      <h3 style="font-size: 18px; font-weight: 800; color: var(--oscuro); margin-bottom: 16px;">📧 Escríbinos</h3>
-      <p style="font-size: 14px; color: var(--gris-sec); margin-bottom: 20px;">Completá el formulario y nos pondremos en contacto contigo.</p>
-      <form style="display: flex; flex-direction: column; gap: 12px;">
+      <h3 class="titulo-tarjeta">📧 Escríbinos</h3>
+      <p class="texto-suave">Completá el formulario y nos pondremos en contacto contigo.</p>
+      <form id="form-contacto" class="form-contacto">
         <div class="form-group">
-          <label style="font-size: 12px; font-weight: 700; color: var(--gris-sec);">Nombre y apellido</label>
-          <input type="text" placeholder="Tu nombre" style="padding: 11px 13px; border-radius: 12px; border: 1px solid var(--papel); background: var(--papel); font-size: 14px; outline: none;">
+          <label class="etiqueta-campo" for="contacto-nombre">Nombre y apellido</label>
+          <input id="contacto-nombre" name="nombre" type="text" placeholder="Tu nombre" class="campo" required>
         </div>
         <div class="form-group">
-          <label style="font-size: 12px; font-weight: 700; color: var(--gris-sec);">Correo electrónico</label>
-          <input type="email" placeholder="tu@email.com" style="padding: 11px 13px; border-radius: 12px; border: 1px solid var(--papel); background: var(--papel); font-size: 14px; outline: none;">
+          <label class="etiqueta-campo" for="contacto-email">Correo electrónico</label>
+          <input id="contacto-email" name="email" type="email" placeholder="tu@email.com" class="campo" required>
         </div>
         <div class="form-group">
-          <label style="font-size: 12px; font-weight: 700; color: var(--gris-sec);">Tu comercio o negocio</label>
-          <input type="text" placeholder="Nombre del negocio (opcional)" style="padding: 11px 13px; border-radius: 12px; border: 1px solid var(--papel); background: var(--papel); font-size: 14px; outline: none;">
+          <label class="etiqueta-campo" for="contacto-comercio">Tu comercio o negocio</label>
+          <input id="contacto-comercio" name="comercio" type="text" placeholder="Nombre del negocio (opcional)" class="campo">
         </div>
         <div class="form-group">
-          <label style="font-size: 12px; font-weight: 700; color: var(--gris-sec);">Mensaje</label>
-          <textarea rows="4" placeholder="¿Cómo te podemos ayudar?" style="padding: 11px 13px; border-radius: 12px; border: 1px solid var(--papel); background: var(--papel); font-size: 14px; outline: none; resize: none;"></textarea>
+          <label class="etiqueta-campo" for="contacto-mensaje">Mensaje</label>
+          <textarea id="contacto-mensaje" name="mensaje" rows="4" placeholder="¿Cómo te podemos ayudar?" class="campo" required></textarea>
         </div>
-        <button type="submit" class="btn-publicar-perfil">Enviar mensaje</button>
+        <button type="submit" class="btn-publicar-perfil btn-enviar">Enviar mensaje</button>
+        <p id="msg-contacto" class="msg" role="status"></p>
       </form>
     </div>
 
     <div class="tarjeta">
-      <h3 style="font-size: 18px; font-weight: 800; color: var(--oscuro); margin-bottom: 16px;">📍 Datos de contacto</h3>
-      <ul style="list-style: none; padding: 0;">
-        <li style="margin-bottom: 12px; font-size: 14px; color: var(--oscuro); display: flex; align-items: center; gap: 10px;">
-          <span style="color: var(--lima); font-weight: 900;">✉</span>
-          <span>hello@daleplus.com.ar</span>
+      <h3 class="titulo-tarjeta">📍 Datos de contacto</h3>
+      <ul class="lista-simple">
+        <li class="dato-contacto">
+          <span class="icono-lima" aria-hidden="true">✉</span>
+          <a href="mailto:hello@daleplus.com.ar">hello@daleplus.com.ar</a>
         </li>
-        <li style="margin-bottom: 12px; font-size: 14px; color: var(--oscuro); display: flex; align-items: center; gap: 10px;">
-          <span style="color: var(--lima); font-weight: 900;">📱</span>
-          <span>+54 9 11 2345-6789</span>
+        <li class="dato-contacto">
+          <span class="icono-lima" aria-hidden="true">📱</span>
+          <a href="tel:+5491123456789">+54 9 11 2345-6789</a>
         </li>
-        <li style="margin-bottom: 12px; font-size: 14px; color: var(--oscuro); display: flex; align-items: center; gap: 10px;">
-          <span style="color: var(--lima); font-weight: 900;">🏢</span>
+        <li class="dato-contacto">
+          <span class="icono-lima">🏢</span>
           <span>Av. Rivadavia 1234, Merlo, Buenos Aires</span>
         </li>
-        <li style="margin-bottom: 12px; font-size: 14px; color: var(--oscuro); display: flex; align-items: center; gap: 10px;">
-          <span style="color: var(--lima); font-weight: 900;">🕒</span>
+        <li class="dato-contacto">
+          <span class="icono-lima">🕒</span>
           <span>Lunes a Viernes de 9:00 a 18:00</span>
         </li>
       </ul>
-      <div style="margin-top: 20px; display: flex; gap: 12px;">
-        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--oscuro); color: var(--blanco); border-radius: 10px; font-size: 18px; text-decoration: none;">f</a>
-        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--oscuro); color: var(--blanco); border-radius: 10px; font-size: 18px; text-decoration: none;">📷</a>
-        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--oscuro); color: var(--blanco); border-radius: 10px; font-size: 18px; text-decoration: none;">💬</a>
+      <div class="redes" aria-label="Redes sociales">
+        <a href="#" class="red-social" aria-label="Facebook">f</a>
+        <a href="#" class="red-social" aria-label="Instagram">📷</a>
+        <a href="#" class="red-social" aria-label="WhatsApp">💬</a>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-  /* ============ NAVEGACIÓN DE SECCIONES ============ */
-  function showSection(id, btn) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+  /* ============ NAVEGACIÓN Y UTILIDADES ============ */
+  const $ = (id) => document.getElementById(id);
+  const setVisible = (id, visible) => {
+    const el = $(id);
+    if (el) el.style.display = visible ? 'block' : 'none';
+  };
+  const esc = (valor) => String(valor).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach((s) => s.classList.toggle('active', s.id === id));
+    document.querySelectorAll('.nav-btn').forEach((b) => b.classList.toggle('active', b.dataset.section === id));
   }
+
+  const CALLES = [
+    { clase: 'mapa-calle h', top: '22%' },
+    { clase: 'mapa-calle h principal', top: '48%' },
+    { clase: 'mapa-calle h', top: '74%' },
+    { clase: 'mapa-calle v', left: '22%' },
+    { clase: 'mapa-calle v principal', left: '52%' },
+    { clase: 'mapa-calle v', left: '80%' }
+  ];
+  const MANZANAS = [
+    ['6%', '7%', '12%', '11%'], ['6%', '26%', '22%', '11%'], ['6%', '56%', '19%', '11%'],
+    ['27%', '7%', '12%', '16%'], ['27%', '26%', '22%', '16%'], ['27%', '57%', '19%', '16%'],
+    ['53%', '7%', '12%', '16%'], ['53%', '26%', '22%', '16%'], ['53%', '57%', '19%', '16%']
+  ];
+  const PARQUES = [
+    { top: '56%', left: '78%', width: '18%', height: '14%' }
+  ];
+  const ETIQUETAS_CALLES = [
+    ['Av. Rivadavia', '49%', '6%'],
+    ['Av. Libertad', '15%', '24%'],
+    ['Merlo', '70%', '76%']
+  ];
+  const EMOJI_CATEGORIA = {
+    almacenes: '🛒', verdulerias: '🥕', panaderias: '🥖',
+    carnicerias: '🥩', kioscos: '🍦', otros: '🏪'
+  };
 
   /* ============ APP DEMO LOGIC ============ */
   let sesion = null;
@@ -1692,6 +2048,9 @@
   ];
 
   const app = {
+    zoom: 1,
+    categoriaMapa: 'todos',
+
     nav(id) {
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       const target = document.getElementById(id);
@@ -1705,7 +2064,7 @@
         const ultimo = document.querySelector('.nav-item:last-child');
         if (ultimo) ultimo.classList.add('active');
       }
-      if (id === 'view-mapa') setTimeout(() => this.dibujarMapa(), 100);
+      if (id === 'view-mapa') requestAnimationFrame(() => this.dibujarMapa());
       this.cerrarPopupMapa();
     },
 
@@ -1714,16 +2073,16 @@
     },
 
     renderGrid(items) {
-      const grid = document.getElementById('grid-promociones');
+      const grid = $('grid-promociones');
       if (!grid) return;
-      grid.innerHTML = items.map(p => `
+      grid.innerHTML = items.map((p) => `
         <div class="promo-card" onclick="app.abrirDetalle(${p.id})">
           <div class="promo-img"><span class="badge-desc">Oferta</span>${p.emoji}</div>
           <div class="promo-info">
-            <div class="promo-nombre">${p.comercio}</div>
-            <div class="promo-categoria">${this.nombreCategoria(p.categoria)}</div>
-            <div class="promo-oferta">${p.titulo}</div>
-            <div class="promo-footer">📍 ${p.direccion.split(',')[0]} · ${p.vencimiento}</div>
+            <div class="promo-nombre">${esc(p.comercio)}</div>
+            <div class="promo-categoria">${esc(this.nombreCategoria(p.categoria))}</div>
+            <div class="promo-oferta">${esc(p.titulo)}</div>
+            <div class="promo-footer">📍 ${esc(p.direccion.split(',')[0])} · ${esc(p.vencimiento)}</div>
           </div>
         </div>
       `).join('');
@@ -1742,22 +2101,22 @@
     },
 
     abrirDetalle(id) {
-      const p = promociones.find(x => x.id === id);
+      const p = promociones.find((x) => x.id === id);
       if (!p) return;
-      document.getElementById('modal-imagen').innerHTML = p.emoji;
-      document.getElementById('modal-badge').textContent = this.nombreCategoria(p.categoria);
-      document.getElementById('modal-titulo').textContent = p.titulo;
-      document.getElementById('modal-comercio').textContent = p.comercio;
-      document.getElementById('modal-descripcion').textContent = p.desc;
-      document.getElementById('modal-precio-orig').textContent = p.precioOrig;
-      document.getElementById('modal-precio-oferta').textContent = p.precioOferta;
-      document.getElementById('modal-direccion').textContent = p.direccion;
-      document.getElementById('modal-vencimiento').textContent = `Vence: ${p.vencimiento}`;
-      document.getElementById('modal-detalle').style.display = 'flex';
+      $('modal-imagen').textContent = p.emoji;
+      $('modal-badge').textContent = this.nombreCategoria(p.categoria);
+      $('modal-titulo').textContent = p.titulo;
+      $('modal-comercio').textContent = p.comercio;
+      $('modal-descripcion').textContent = p.desc;
+      $('modal-precio-orig').textContent = p.precioOrig;
+      $('modal-precio-oferta').textContent = p.precioOferta;
+      $('modal-direccion').textContent = p.direccion;
+      $('modal-vencimiento').textContent = `Vence: ${p.vencimiento}`;
+      $('modal-detalle').style.display = 'flex';
     },
 
     cerrarModal() {
-      document.getElementById('modal-detalle').style.display = 'none';
+      $('modal-detalle').style.display = 'none';
     },
 
     abrirPublicarDesdePerfil() {
@@ -1770,10 +2129,13 @@
     },
 
     mostrarFormularioPublicar(habilitado) {
-      const acceso = document.getElementById('acceso-publicar');
-      const form = document.getElementById('form-publicar');
-      if (acceso) acceso.style.display = habilitado ? 'none' : 'block';
-      if (form) form.style.display = habilitado ? 'block' : 'none';
+      setVisible('acceso-publicar', !habilitado);
+      setVisible('form-publicar', habilitado);
+    },
+
+    mostrarPanelPerfil(activo) {
+      ['perfil-sesion', 'perfil-registro-comercio', 'perfil-cliente', 'perfil-comercio']
+        .forEach((id) => setVisible(id, id === activo));
     },
 
     modoCliente() {
@@ -1783,25 +2145,11 @@
     },
 
     modoRegistroComercio() {
-      const elSesion = document.getElementById('perfil-sesion');
-      const elRegistro = document.getElementById('perfil-registro-comercio');
-      const elCliente = document.getElementById('perfil-cliente');
-      const elComercio = document.getElementById('perfil-comercio');
-      if (elSesion) elSesion.style.display = 'none';
-      if (elRegistro) elRegistro.style.display = 'block';
-      if (elCliente) elCliente.style.display = 'none';
-      if (elComercio) elComercio.style.display = 'none';
+      this.mostrarPanelPerfil('perfil-registro-comercio');
     },
 
     cancelarRegistro() {
-      const elSesion = document.getElementById('perfil-sesion');
-      const elRegistro = document.getElementById('perfil-registro-comercio');
-      const elCliente = document.getElementById('perfil-cliente');
-      const elComercio = document.getElementById('perfil-comercio');
-      if (elSesion) elSesion.style.display = 'block';
-      if (elRegistro) elRegistro.style.display = 'none';
-      if (elCliente) elCliente.style.display = 'none';
-      if (elComercio) elComercio.style.display = 'none';
+      this.mostrarPanelPerfil('perfil-sesion');
     },
 
     guardarComercio() {
@@ -1837,143 +2185,165 @@
 
     cerrarSesion() {
       sesion = null;
-      const elSesion = document.getElementById('perfil-sesion');
-      const elRegistro = document.getElementById('perfil-registro-comercio');
-      const elCliente = document.getElementById('perfil-cliente');
-      const elComercio = document.getElementById('perfil-comercio');
-      if (elSesion) elSesion.style.display = 'block';
-      if (elRegistro) elRegistro.style.display = 'none';
-      if (elCliente) elCliente.style.display = 'none';
-      if (elComercio) elComercio.style.display = 'none';
+      this.mostrarPanelPerfil('perfil-sesion');
       this.mostrarFormularioPublicar(false);
       this.nav('view-perfil');
     },
 
     renderPerfil() {
-      const elSesion = document.getElementById('perfil-sesion');
-      const elRegistro = document.getElementById('perfil-registro-comercio');
-      const elCliente = document.getElementById('perfil-cliente');
-      const elComercio = document.getElementById('perfil-comercio');
-      if (elSesion) elSesion.style.display = 'none';
-      if (elRegistro) elRegistro.style.display = 'none';
-      if (elCliente) elCliente.style.display = 'none';
-      if (elComercio) elComercio.style.display = 'none';
       if (!sesion) {
-        if (elSesion) elSesion.style.display = 'block';
+        this.mostrarPanelPerfil('perfil-sesion');
         return;
       }
+      this.mostrarPanelPerfil(sesion.rol === 'cliente' ? 'perfil-cliente' : 'perfil-comercio');
       if (sesion.rol === 'cliente') {
-        const elNombre = document.getElementById('cli-nombre');
-        if (elNombre) elNombre.textContent = sesion.nombre;
-        if (elCliente) elCliente.style.display = 'block';
-      } else if (sesion.rol === 'comercio') {
-        const elNombre = document.getElementById('emp-nombre');
-        const elDir = document.getElementById('emp-direccion');
-        const elRubro = document.getElementById('emp-rubro');
-        const elDias = document.getElementById('emp-dias');
-        const elHorario = document.getElementById('emp-horario');
-        if (elNombre) elNombre.textContent = sesion.nombre;
-        if (elDir) elDir.textContent = sesion.direccion;
-        if (elRubro) elRubro.textContent = this.nombreCategoria(sesion.rubro);
-        if (elDias) elDias.textContent = sesion.dias || 'Lunes a Viernes';
-        if (elHorario) elHorario.textContent = sesion.horario || '9:00 - 20:00';
-        if (elComercio) elComercio.style.display = 'block';
+        $('cli-nombre').textContent = sesion.nombre;
+      } else {
+        $('emp-nombre').textContent = sesion.nombre;
+        $('emp-direccion').textContent = sesion.direccion;
+        $('emp-rubro').textContent = this.nombreCategoria(sesion.rubro);
+        $('emp-dias').textContent = sesion.dias || 'Lunes a Viernes';
+        $('emp-horario').textContent = sesion.horario || '9:00 - 20:00';
         this.renderOfertasPropias();
       }
     },
 
     renderOfertasPropias() {
-      const contenedor = document.getElementById('lista-ofertas-propias');
-      const vacila = document.getElementById('vacila-ofertas');
-      if (!contenedor || !vacila) return;
-      const propias = promociones.filter(p => p.comercio === sesion.nombre);
-      if (propias.length === 0) {
-        contenedor.innerHTML = '';
-        vacila.style.display = 'block';
-        return;
-      }
-      vacila.style.display = 'none';
-      contenedor.innerHTML = propias.map(p => `
+      const contenedor = $('lista-ofertas-propias');
+      if (!contenedor) return;
+      const propias = promociones.filter((p) => p.comercio === sesion.nombre);
+      setVisible('vacila-ofertas', propias.length === 0);
+      contenedor.innerHTML = propias.map((p) => `
         <div class="oferta-propia">
-          <div class="top"><div class="titulo">${p.titulo}</div><div class="estado">${p.vencimiento}</div></div>
-          <div class="desc">${p.desc}</div>
-          <div class="footer"><span>${this.nombreCategoria(p.categoria)}</span><span>${p.precioOferta}</span></div>
+          <div class="top"><div class="titulo">${esc(p.titulo)}</div><div class="estado">${esc(p.vencimiento)}</div></div>
+          <div class="desc">${esc(p.desc)}</div>
+          <div class="footer"><span>${esc(this.nombreCategoria(p.categoria))}</span><span>${esc(p.precioOferta)}</span></div>
         </div>
       `).join('');
     },
 
     dibujarMapa() {
-      const wrap = document.getElementById('mapa-wrap');
+      const wrap = $('mapa-wrap');
       if (!wrap) return;
-      wrap.innerHTML = '';
-      const calles = [
-        { clase: 'mapa-calle h', style: 'top: 22%;' },
-        { clase: 'mapa-calle h', style: 'top: 48%;' },
-        { clase: 'mapa-calle h', style: 'top: 75%;' },
-        { clase: 'mapa-calle v', style: 'left: 22%;' },
-        { clase: 'mapa-calle v', style: 'left: 48%;' },
-        { clase: 'mapa-calle v', style: 'left: 75%;' }
-      ];
-      calles.forEach(c => {
-        const el = document.createElement('div');
-        el.className = c.clase;
-        el.style.cssText = c.style;
-        wrap.appendChild(el);
-      });
-      this.marcadorUsuarioMapa = document.createElement('div');
-      this.marcadorUsuarioMapa.className = 'mapa-usuario';
-      this.marcadorUsuarioMapa.style.top = '50%';
-      this.marcadorUsuarioMapa.style.left = '50%';
-      this.marcadorUsuarioMapa.textContent = 'Tú';
-      this.marcadorUsuarioMapa.onclick = () => this.centrarUbicacion();
-      wrap.appendChild(this.marcadorUsuarioMapa);
-      const styles = {
-        almacenes: { color: '#DFFF00', emoji: '🛒' },
-        verdulerias: { color: '#2e7d32', emoji: '🥕' },
-        panaderias: { color: '#ef6c00', emoji: '🥖' },
-        carnicerias: { color: '#c62828', emoji: '🥩' },
-        kioscos: { color: '#7b1fa2', emoji: '🍦' },
-        otros: { color: '#6b6b6b', emoji: '🏪' }
-      };
-      [...promociones].forEach(p => {
-        const s = styles[p.categoria] || styles.otros;
+      const lienzo = document.createElement('div');
+      lienzo.className = 'mapa-lienzo';
+      lienzo.style.transform = `scale(${this.zoom})`;
+
+      MANZANAS.forEach(([top, left, ancho, alto]) => {
         const m = document.createElement('div');
-        m.className = 'mapa-marcador ' + p.categoria;
+        m.className = 'mapa-manzana';
+        m.style.cssText = `top:${top};left:${left};width:${ancho};height:${alto}`;
+        lienzo.appendChild(m);
+      });
+      PARQUES.forEach((parque) => {
+        const p = document.createElement('div');
+        p.className = 'mapa-parque';
+        p.style.cssText = `top:${parque.top};left:${parque.left};width:${parque.width};height:${parque.height}`;
+        lienzo.appendChild(p);
+      });
+      const rio = document.createElement('div');
+      rio.className = 'mapa-rio';
+      lienzo.appendChild(rio);
+      CALLES.forEach((calle) => {
+        const el = document.createElement('div');
+        el.className = calle.clase;
+        if (calle.top) el.style.top = calle.top;
+        if (calle.left) el.style.left = calle.left;
+        lienzo.appendChild(el);
+      });
+      ETIQUETAS_CALLES.forEach(([texto, top, left]) => {
+        const et = document.createElement('div');
+        et.className = 'mapa-etiqueta';
+        et.textContent = texto;
+        et.style.top = top;
+        et.style.left = left;
+        lienzo.appendChild(et);
+      });
+
+      const ns = 'http://www.w3.org/2000/svg';
+      const ruta = document.createElementNS(ns, 'svg');
+      ruta.setAttribute('class', 'mapa-ruta');
+      ruta.setAttribute('viewBox', '0 0 100 100');
+      ruta.setAttribute('preserveAspectRatio', 'none');
+      this.rutaPolyline = document.createElementNS(ns, 'polyline');
+      ruta.appendChild(this.rutaPolyline);
+      lienzo.appendChild(ruta);
+
+      const usuario = document.createElement('div');
+      usuario.className = 'mapa-usuario';
+      usuario.style.top = usuario.style.left = '50%';
+      usuario.textContent = 'Tú';
+      usuario.onclick = () => this.centrarUbicacion();
+      lienzo.appendChild(usuario);
+
+      const visibles = promociones.filter((p) => this.categoriaMapa === 'todos' || p.categoria === this.categoriaMapa);
+      visibles.forEach((p) => {
+        const m = document.createElement('div');
+        m.className = `mapa-marcador ${p.categoria}`;
         m.style.top = p.top;
         m.style.left = p.left;
-        m.textContent = p.emoji;
         m.title = p.comercio;
+        const emoji = document.createElement('span');
+        emoji.className = 'emoji';
+        emoji.textContent = p.emoji || EMOJI_CATEGORIA[p.categoria];
+        m.appendChild(emoji);
         m.onclick = (e) => { e.stopPropagation(); this.abrirPopupMapa(p, m); };
-        wrap.appendChild(m);
+        lienzo.appendChild(m);
       });
+
+      wrap.replaceChildren(lienzo);
+      const contador = $('mapa-contador');
+      if (contador) contador.textContent = `${visibles.length} oferta${visibles.length === 1 ? '' : 's'} cerca`;
+    },
+
+    zoomMapa(delta) {
+      this.zoom = Math.min(2, Math.max(1, Math.round((this.zoom + delta * 0.25) * 100) / 100));
+      const lienzo = $('mapa-wrap')?.querySelector('.mapa-lienzo');
+      if (lienzo) lienzo.style.transform = `scale(${this.zoom})`;
+      this.cerrarPopupMapa();
     },
 
     centrarUbicacion() {
-      const popup = document.getElementById('popup-mapa');
-      if (popup) popup.style.display = 'none';
+      this.zoom = 1;
+      const lienzo = $('mapa-wrap')?.querySelector('.mapa-lienzo');
+      if (lienzo) lienzo.style.transform = 'scale(1)';
+      this.cerrarPopupMapa();
     },
 
     abrirPopupMapa(p, el) {
-      const popup = document.getElementById('popup-mapa');
+      const popup = $('popup-mapa');
       if (!popup) return;
-      document.getElementById('popup-nombre').textContent = p.comercio;
-      document.getElementById('popup-rub').textContent = this.nombreCategoria(p.categoria);
-      document.getElementById('popup-oferta').textContent = p.titulo;
-      document.getElementById('popup-dir').textContent = p.direccion;
+      $('popup-nombre').textContent = p.comercio;
+      $('popup-rub').textContent = this.nombreCategoria(p.categoria);
+      $('popup-oferta').textContent = p.titulo;
+      $('popup-dir').textContent = p.direccion;
       const rect = el.getBoundingClientRect();
-      const wrapRect = document.getElementById('mapa-wrap').getBoundingClientRect();
-      popup.style.top = (rect.top - wrapRect.top - 110) + 'px';
-      popup.style.left = (rect.left - wrapRect.left + 15) + 'px';
+      const base = popup.closest('.view').getBoundingClientRect();
+      popup.style.top = Math.max(120, rect.top - base.top - 110) + 'px';
+      popup.style.left = Math.max(12, Math.min(rect.left - base.left + 15, base.width - 180)) + 'px';
       popup.style.display = 'block';
+
+      document.querySelectorAll('#mapa-wrap .mapa-marcador').forEach((m) => m.classList.remove('activo'));
+      el.classList.add('activo');
+      if (this.rutaPolyline) {
+        const x = parseFloat(el.style.left);
+        const y = parseFloat(el.style.top);
+        this.rutaPolyline.setAttribute('points', `50,50 ${x},50 ${x},${y}`);
+        this.rutaPolyline.parentElement.classList.add('visible');
+      }
     },
 
     cerrarPopupMapa() {
-      const popup = document.getElementById('popup-mapa');
-      if (popup) popup.style.display = 'none';
+      setVisible('popup-mapa', false);
+      document.querySelectorAll('#mapa-wrap .mapa-marcador.activo').forEach((m) => m.classList.remove('activo'));
+      if (this.rutaPolyline) this.rutaPolyline.parentElement.classList.remove('visible');
     },
 
     alternarCapas() {
-      alert('Filtros y capas del mapa en desarrollo. Próximamente podrás activar/desactivar rubros y ver cobertura de ofertas.');
+      const panel = $('filtros-mapa');
+      const btn = $('btn-capas');
+      panel.classList.toggle('visible');
+      btn.classList.toggle('activo', panel.classList.contains('visible'));
     },
 
     publicar(e) {
@@ -1984,29 +2354,31 @@
       }
       const btn = document.querySelector('#form-publicar button[type="submit"]');
       const textoOriginal = btn.textContent;
-      btn.textContent = "Publicando...";
+      btn.textContent = 'Publicando...';
       btn.disabled = true;
-      const nueva = {
+      const descuento = $('pub-descuento').value;
+      promociones.push({
         id: Date.now(),
         comercio: sesion.nombre,
         categoria: sesion.rubro,
         emoji: '🏪',
-        titulo: document.getElementById('pub-titulo').value,
-        desc: document.getElementById('pub-descuento').value,
+        titulo: $('pub-titulo').value,
+        desc: descuento,
         precioOrig: '$---',
-        precioOferta: document.getElementById('pub-descuento').value,
+        precioOferta: descuento,
         direccion: sesion.direccion,
         vencimiento: 'Próximamente',
         top: (30 + Math.random() * 40) + '%',
         left: (15 + Math.random() * 70) + '%'
-      };
+      });
       setTimeout(() => {
-        promociones.push(nueva);
         btn.textContent = textoOriginal;
         btn.disabled = false;
-        document.getElementById('form-publicar').reset();
-        const msg = document.getElementById('msg-publicar');
-        if (msg) { msg.style.display = 'block'; setTimeout(() => { msg.style.display = 'none'; }, 3000); }
+        $('form-publicar').reset();
+        const msg = $('msg-publicar');
+        msg.textContent = 'Promoción publicada correctamente.';
+        msg.style.display = 'block';
+        setTimeout(() => { msg.style.display = 'none'; }, 3000);
         this.render();
         this.renderOfertasPropias();
         this.dibujarMapa();
@@ -2015,15 +2387,72 @@
       return false;
     },
 
-    misFavoritas() { alert('Tus promociones guardadas aparecerán aquí.'); },
     misNotificaciones() { alert('Recibirás alertas de nuevas ofertas en Merlo.'); }
   };
 
-  document.getElementById('modal-detalle').addEventListener('click', (e) => {
+  $('modal-detalle').addEventListener('click', (e) => {
     if (e.target.id === 'modal-detalle') app.cerrarModal();
   });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') app.cerrarModal(); });
-  document.getElementById('mapa-wrap').addEventListener('click', () => { app.cerrarPopupMapa(); });
+  $('mapa-wrap').addEventListener('click', () => app.cerrarPopupMapa());
+  $('form-contacto').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const msg = $('msg-contacto');
+    msg.textContent = '¡Gracias! Tu mensaje quedó registrado. Te respondemos a la brevedad.';
+    msg.style.display = 'block';
+    e.target.reset();
+  });
+  document.querySelectorAll('#filtros-mapa [data-cat]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      app.categoriaMapa = btn.dataset.cat;
+      document.querySelectorAll('#filtros-mapa [data-cat]').forEach((b) => b.classList.toggle('activo', b === btn));
+      app.cerrarPopupMapa();
+      app.dibujarMapa();
+    });
+  });
+  document.addEventListener('click', (e) => {
+    const enlace = e.target.closest('[data-section]');
+    if (enlace) {
+      e.preventDefault();
+      showSection(enlace.dataset.section);
+    }
+  });
+  document.addEventListener('error', (e) => {
+    const img = e.target;
+    if (!(img instanceof HTMLImageElement) || img.dataset.fallback) return;
+    img.dataset.fallback = '1';
+    const emoji = img.dataset.emoji || '🏪';
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200"><rect width="100%" height="100%" fill="#F2F2F0"/><text x="50%" y="50%" font-size="72" text-anchor="middle" dominant-baseline="central">${emoji}</text></svg>`;
+    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }, true);
+
+  const OFERTAS_POR_RUBRO = {
+    almacenes: ['20% OFF en azúcar 1kg', '3x2 en fideos', '15% OFF en aceite de girasol', '2x1 en leche larga vida', '$500 off en compras desde $3.000'],
+    verdulerias: ['2x1 en tomates', '30% OFF en frutas de estación', '3 kg de papas a $990', '20% OFF en ensalada fresca', '12 unidades de huevos a $1.200'],
+    panaderias: ['Pan de campo 2x1', '50% OFF en facturas después de las 18 h', '3 facturas por $800', '20% OFF en tortas', '6 medialunas por $700'],
+    carnicerias: ['15% OFF en carne picada', '2x1 en chorizos', '25% OFF en pollo entero', 'Asado a $3.990 el kilo', '10% OFF en hamburguesas'],
+    kioscos: ['Helados 2 por $900', '20% OFF en bebidas frías', '2x1 en alfajores', 'Café + medialuna a $900', '15% OFF en cigarrillos'],
+    ferreterias: ['20% OFF en tornillería', '3x2 en pinturas', '15% OFF en herramientas manuales', '2x1 en bombillas LED', '$2.000 off en taladros']
+  };
+  const VENCIMIENTOS_OFERTAS = ['Vence hoy', 'Vence en 3 días', 'Solo esta semana', 'Hasta el domingo'];
+
+  document.querySelectorAll('.comercio-item[data-rubro]').forEach((item) => {
+    const pool = OFERTAS_POR_RUBRO[item.dataset.rubro];
+    if (!pool) return;
+    const overlay = document.createElement('div');
+    overlay.className = 'comercio-oferta';
+    overlay.innerHTML = '<span class="etiqueta">Oferta destacada</span><strong></strong><small></small>';
+    item.appendChild(overlay);
+    item.addEventListener('mouseenter', () => {
+      let oferta = pool[Math.floor(Math.random() * pool.length)];
+      if (pool.length > 1 && oferta === item.dataset.ofertaActual) {
+        oferta = pool[(pool.indexOf(oferta) + 1) % pool.length];
+      }
+      item.dataset.ofertaActual = oferta;
+      overlay.querySelector('strong').textContent = oferta;
+      overlay.querySelector('small').textContent = VENCIMIENTOS_OFERTAS[Math.floor(Math.random() * VENCIMIENTOS_OFERTAS.length)];
+    });
+  });
 
   app.render();
 </script>
